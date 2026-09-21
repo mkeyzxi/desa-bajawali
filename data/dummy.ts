@@ -1,12 +1,13 @@
 export const desaInfo = {
   name: "Desa Bajawali",
+  kepalaDesa: "Ketut Langga",
   kecamatan: "Lariang",
   kabupaten: "Pasangkayu",
   provinsi: "Sulawesi Barat",
-  penduduk: "2.486",
-  kk: "687",
-  dusun: "5",
-  rt: "16",
+  penduduk: "765",
+  kk: "248",
+  dusun: "4",
+  rt: "8",
   luasWilayah: "7,05", // km2
   tahunData: "2026",
 };
