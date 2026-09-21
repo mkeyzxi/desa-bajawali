@@ -170,7 +170,7 @@ export function KelompokUmurBarChart() {
     datasets: [
       {
         label: 'Jumlah Jiwa',
-        data: [450, 380, 1100, 350, 206],
+        data: [119, 143, 346, 102, 52],
         backgroundColor: colors.green300,
         hoverBackgroundColor: colors.green700,
         borderRadius: 4,
@@ -192,3 +192,94 @@ export function KelompokUmurBarChart() {
 
   return <div className="w-full h-full"><Bar options={options} data={data} /></div>;
 }
+
+export function AgamaDoughnutChart() {
+  const data = {
+    labels: ['Islam', 'Hindu', 'Kristen', 'Katholik'],
+    datasets: [
+      {
+        data: [146, 586, 7, 24],
+        backgroundColor: [
+          colors.green700,
+          colors.sun,
+          colors.clay,
+          colors.blueMap,
+        ],
+        borderWidth: 0,
+        hoverOffset: 4
+      },
+    ],
+  };
+
+  return <div className="w-full h-full"><Doughnut options={commonOptions} data={data} /></div>;
+}
+
+export function SukuDoughnutChart() {
+  const data = {
+    labels: ['Bali', 'Bugis', 'Jawa', 'Tator', 'Mandar'],
+    datasets: [
+      {
+        data: [585, 59, 75, 34, 3],
+        backgroundColor: [
+          colors.green300,
+          colors.green700,
+          colors.blueMap,
+          colors.clay,
+          colors.sun,
+        ],
+        borderWidth: 0,
+        hoverOffset: 4
+      },
+    ],
+  };
+
+  return <div className="w-full h-full"><Doughnut options={commonOptions} data={data} /></div>;
+}
+
+export function StatusPernikahanPieChart() {
+  const data = {
+    labels: ['Kawin', 'Belum Kawin'],
+    datasets: [
+      {
+        data: [419, 319],
+        backgroundColor: [
+          colors.green700,
+          colors.green100,
+        ],
+        borderWidth: 0,
+        hoverOffset: 4
+      },
+    ],
+  };
+
+  return <div className="w-full h-full"><Doughnut options={commonOptions} data={data} /></div>;
+}
+
+export function DistribusiWilayahBarChart() {
+  const data = {
+    labels: ['Dusun Kerta', 'Dusun Makmur', 'Lestari', 'Mandiri'],
+    datasets: [
+      {
+        label: 'Populasi',
+        data: [164, 350, 174, 77],
+        backgroundColor: colors.blueMap,
+        hoverBackgroundColor: colors.green700,
+        borderRadius: 4,
+      },
+    ],
+  };
+
+  const options = {
+    ...commonOptions,
+    ...gridOptions,
+    plugins: {
+      ...commonOptions.plugins,
+      legend: {
+        display: false
+      }
+    },
+  };
+
+  return <div className="w-full h-full"><Bar options={options} data={data} /></div>;
+}
+

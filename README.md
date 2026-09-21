@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Website Resmi Desa Bajawali
 
-## Getting Started
+Website Resmi Desa Bajawali, Kecamatan Lariang, Kabupaten Pasangkayu, Provinsi Sulawesi Barat. Proyek ini dibangun sebagai portal informasi digital publik yang modern, responsif, dan SEO-friendly.
 
-First, run the development server:
+Website ini bertujuan untuk mendokumentasikan profil desa, kondisi geografis, demografi, struktur pemerintahan, potensi wilayah, kegiatan masyarakat, dan data statistik, sehingga memudahkan warga, pendatang, mahasiswa, maupun instansi dalam mengakses informasi mengenai Desa Bajawali.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Fitur Utama
+
+- **Profil Desa Lengkap**: Memuat Sejarah, Visi & Misi, Geografi, Demografi, dan Struktur Pemerintahan.
+- **Pusat Informasi & Potensi**: Menyoroti potensi desa seperti Pertanian, Perikanan, UMKM, Pariwisata, dan SDA.
+- **Berita & Galeri**: Sistem publikasi kegiatan masyarakat, pembangunan, dan pemerintahan desa.
+- **Dashboard Statistik (Data Desa)**: Visualisasi data kependudukan (umur, jenis kelamin, pekerjaan) menggunakan Chart.js.
+- **Peta Interaktif**: Menampilkan lokasi dan batas (tahap pengembangan) Desa Bajawali dengan integrasi Leaflet.js.
+- **SEO & Responsif**: Dibangun dengan prinsip Mobile-First dan arsitektur konten yang ramah Google (Search Engine Optimization).
+
+## 🛠️ Teknologi yang Digunakan
+
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Language**: TypeScript
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Visualisasi Data**: [Chart.js](https://www.chartjs.org/) & [react-chartjs-2](https://react-chartjs-2.js.org/)
+- **Pemetaan**: [Leaflet.js](https://leafletjs.com/) & react-leaflet
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Package Manager**: pnpm
+
+## 📁 Struktur Folder Utama
+
+```text
+desa-bajawali/
+├── app/               # Rute halaman Next.js (App Router)
+│   ├── berita/        # Halaman daftar & detail berita
+│   ├── data-desa/     # Halaman visualisasi data statistik
+│   ├── galeri/        # Halaman dokumentasi foto
+│   ├── kontak/        # Halaman informasi kontak & lokasi
+│   ├── potensi/       # Halaman potensi desa (Pertanian, UMKM, dll)
+│   ├── profil/        # Halaman profil desa (Sejarah, Visi Misi, Geografis, dll)
+│   └── page.tsx       # Landing page (Beranda)
+├── components/        # Komponen UI Reusable (Navbar, Footer, Card, UI Elements)
+│   ├── charts/        # Komponen pembungkus Chart.js
+│   ├── layout/        # Komponen layout utama
+│   └── map/           # Komponen pembungkus Leaflet
+└── data/              # Sumber data (dummy.ts untuk dummy awal)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💻 Cara Menjalankan Proyek Secara Lokal
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Pastikan Anda telah menginstal Node.js dan `pnpm` di komputer Anda.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone repository ini** (jika belum):
+   ```bash
+   git clone https://github.com/mkeyzxi/desa-bajawali.git
+   cd desa-bajawali
+   ```
 
-## Learn More
+2. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Jalankan Development Server**:
+   ```bash
+   pnpm dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Buka di Browser**:
+   Kunjungi [http://localhost:3000](http://localhost:3000) untuk melihat hasilnya.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 Catatan Data & Konten (Status Proyek)
 
-## Deploy on Vercel
+Saat ini, website berada pada fase penyelesaian UI/UX dan struktur informasi. Sebagian besar data (seperti jumlah penduduk pasti, visi-misi spesifik, nama pejabat desa, dan artikel berita) masih menggunakan **Data Contoh (Dummy Data)**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Untuk melihat rincian kebutuhan data asli yang perlu dilengkapi oleh pihak desa sebelum diluncurkan sepenuhnya, silakan merujuk pada file `DATA.md` di dalam repositori ini.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+*Dikembangkan untuk Desa Bajawali, Lariang, Pasangkayu.*

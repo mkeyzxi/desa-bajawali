@@ -26,7 +26,7 @@ export default function DemografiPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="bg-paper-50 border border-paper-200 p-8 rounded-md">
               <div className="text-sm font-semibold text-ink-600 mb-2">Total Penduduk</div>
               <div className="font-editorial text-5xl font-semibold text-ink-950 mb-4">{desaInfo.penduduk}</div>
@@ -34,11 +34,11 @@ export default function DemografiPage() {
               <div className="flex gap-4 border-t border-paper-200 pt-4 mt-6">
                 <div className="flex-1">
                   <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Laki-laki</div>
-                  <div className="font-editorial text-2xl text-ink-950">1.250</div>
+                  <div className="font-editorial text-2xl text-ink-950">411</div>
                 </div>
                 <div className="flex-1">
                   <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Perempuan</div>
-                  <div className="font-editorial text-2xl text-ink-950">1.236</div>
+                  <div className="font-editorial text-2xl text-ink-950">354</div>
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@ export default function DemografiPage() {
             <div className="bg-paper-50 border border-paper-200 p-8 rounded-md">
               <div className="text-sm font-semibold text-ink-600 mb-2">Kepadatan Wilayah</div>
               <div className="font-editorial text-5xl font-semibold text-ink-950 mb-4">
-                150 <span className="text-2xl text-ink-400 font-sans">jiwa/km²</span>
+                109 <span className="text-2xl text-ink-400 font-sans">jiwa/km²</span>
               </div>
               
               <div className="flex gap-4 border-t border-paper-200 pt-4 mt-6">
@@ -60,10 +60,30 @@ export default function DemografiPage() {
                 </div>
               </div>
             </div>
+
+            <div className="bg-paper-50 border border-paper-200 p-8 rounded-md md:col-span-2 lg:col-span-1">
+              <div className="text-sm font-semibold text-ink-600 mb-2">Hubungan Keluarga</div>
+              <div className="font-editorial text-5xl font-semibold text-ink-950 mb-4">760 <span className="text-2xl text-ink-400 font-sans">jiwa inti</span></div>
+              
+              <div className="flex gap-4 border-t border-paper-200 pt-4 mt-6">
+                <div className="flex-1">
+                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Suami</div>
+                  <div className="font-editorial text-2xl text-ink-950">248</div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Istri</div>
+                  <div className="font-editorial text-2xl text-ink-950">200</div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Anak</div>
+                  <div className="font-editorial text-2xl text-ink-950">312</div>
+                </div>
+              </div>
+            </div>
           </div>
           
           <div className="p-4 bg-sun/10 border-l-2 border-sun text-sm text-ink-800">
-            <strong>Catatan Data:</strong> Publikasi BPS Kecamatan Lariang Dalam Angka 2020 mencatat data penduduk pada 2019 sebesar 1.055 jiwa. Angka {desaInfo.penduduk} di atas adalah <em>data contoh</em> untuk tujuan tampilan UI, dan menunggu pembaruan resmi.
+            <strong>Catatan Data:</strong> Data di atas berdasarkan validasi data desa per tahun {desaInfo.tahunData}.
           </div>
           
           <div className="mt-12 text-center">
