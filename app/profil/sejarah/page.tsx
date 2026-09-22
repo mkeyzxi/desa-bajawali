@@ -28,26 +28,38 @@ export default function SejarahPage() {
 
           <div className="prose prose-xl prose-p:text-ink-800 prose-headings:font-editorial prose-headings:text-ink-950 max-w-none">
             <p className="text-xl font-medium text-ink-950 leading-relaxed mb-8">
-              Desa Bajawali merupakan salah satu desa yang terletak di Kecamatan Lariang, Kabupaten Pasangkayu. Sejarah pembentukannya berkaitan erat dengan perkembangan kawasan administratif di Sulawesi Barat serta dinamika kependudukan setempat.
+              Desa Bajawali terletak di Kecamatan Lariang, Kabupaten Pasangkayu, Provinsi Sulawesi Barat. Pada awalnya wilayah ini merupakan hutan belantara yang kemudian dibuka oleh pemerintah untuk menjadi pemukiman melalui program transmigrasi PIR.
             </p>
             
-            <h2>Asal-usul Desa</h2>
+            <h2>Tujuan Program Transmigrasi</h2>
             <p>
-              [Draft Data Contoh] Asal mula penamaan Bajawali bersumber dari kisah masyarakat lokal. Wilayah ini awalnya merupakan pemukiman kecil yang kemudian terus berkembang seiring dengan masuknya pendatang dan aktivitas perkebunan di sekitarnya.
+              Program transmigrasi PIR tersebut bertujuan untuk penyebaran jumlah penduduk serta mengentaskan kemiskinan. Warga transmigrasi ditempatkan di wilayah tersebut pada periode <strong>26 Desember 1991</strong> sampai dengan <strong>12 Maret 1993</strong>.
             </p>
             
-            <h2>Perkembangan Wilayah</h2>
+            <h2>Perjalanan Menjadi Desa Definitif</h2>
             <p>
-              Seiring berjalannya waktu, Bajawali mengalami pemekaran wilayah dan pertumbuhan penduduk yang signifikan. Pembangunan fasilitas dasar seperti sarana pendidikan, kesehatan, dan infrastruktur jalan mulai digalakkan untuk mendukung perekonomian warga yang mayoritas bertani.
+              Sebelum menjadi desa definitif, Desa Bajawali berada di bawah naungan binaan Departemen Transmigrasi dengan nama <strong>UPT Baras VII</strong>. Pada tanggal <strong>26 Februari 1997</strong>, Pemerintah melalui Departemen Transmigrasi menyerahkan Desa Bajawali kepada Pemerintah Daerah berdasarkan Surat Keputusan <strong>Nomor: Ba.61/M/11/1997</strong>. Sejak saat itu, Desa Bajawali menjadi Desa Definitif.
             </p>
 
             <div className="my-12 border-l-4 border-green-700 pl-6 py-2 bg-paper-100 italic text-ink-600">
-              &quot;Kekuatan utama Bajawali terletak pada kebersamaan masyarakatnya dalam menghadapi setiap perubahan dan perkembangan jaman.&quot;
+              &quot;Pada tahun tersebut masyarakat bermusyawarah untuk merumuskan nama yang terbaik bagi Pemukiman Eks Transmigrasi (UPT Baras VII), dan dari hasil musyawarah tersebut disepakati nama BAJAWALI.&quot;
+            </div>
+
+            <h2>Makna Nama Bajawali</h2>
+            <p>
+              Menurut dokumen, secara etimologi nama Bajawali berasal dari kata Sanskerta, yaitu <strong>JAVA</strong> dan <strong>BALI</strong>, yang memiliki makna:
+            </p>
+
+            <div className="not-prose my-8 border border-paper-200 bg-paper-50 p-8 text-center rounded-md">
+              <div className="text-xs font-bold uppercase tracking-widest text-green-700 mb-3">Makna Bajawali</div>
+              <div className="font-editorial text-3xl md:text-4xl text-ink-950">
+                Kelahiran dan Tempat Berpijak
+              </div>
             </div>
 
             <h2>Kondisi Saat Ini</h2>
             <p>
-              Kini, Desa Bajawali terus berbenah menuju desa yang mandiri dan berdaya saing. Melalui kolaborasi antara pemerintah desa dan warga, berbagai potensi lokal terus digali, baik dari sektor pertanian maupun pemberdayaan UMKM.
+              Kini, Desa Bajawali terus berbenah menuju desa yang mandiri dan berdaya saing dengan moto <strong>BAJAWALIKU JAYA</strong>. Melalui kolaborasi antara pemerintah desa dan warga, berbagai potensi lokal terus digali, baik dari sektor pertanian maupun pemberdayaan UMKM.
             </p>
           </div>
           

@@ -18,7 +18,7 @@ export default function PotensiPage() {
             Yang tumbuh dari tanah dan kerja masyarakat.
           </h1>
           <p className="text-ink-800 text-lg leading-relaxed">
-            Potensi Desa Bajawali ditampilkan berdasarkan kondisi nyata wilayah dan aktivitas masyarakat. Setiap sektor memegang peran penting dalam memutar roda perekonomian dan kesejahteraan warga desa.
+            Potensi Desa Bajawali ditampilkan berdasarkan kondisi nyata wilayah dan aktivitas masyarakat. Hasil pertanian kelapa sawit menjadi komoditas andalan, ditemani berkembangnya UMKM, 10 kelompok tani, serta kekayaan budaya dan keagamaan warga.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ export default function PotensiPage() {
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
               <span className="text-white/80 text-sm font-bold uppercase tracking-widest mb-3">01</span>
               <h2 className="font-editorial text-4xl text-white mb-3">Pertanian</h2>
-              <p className="text-white/90 mb-6 max-w-md text-lg hidden md:block">Informasi mengenai komoditas lahan, persawahan, dan aktivitas perkebunan warga yang mendominasi kawasan Bajawali.</p>
+              <p className="text-white/90 mb-6 max-w-md text-lg hidden md:block">Kelapa sawit sebagai komoditas andalan warga, ditopang 10 kelompok tani dan 1 Gapoktan.</p>
               <div className="text-sm font-semibold text-white flex items-center gap-2">
                 <span className="border-b border-white group-hover:border-transparent transition-colors">Lihat detail</span> <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
               </div>
@@ -86,14 +86,14 @@ export default function PotensiPage() {
           <Link href="/potensi/perikanan" className="group bg-paper-50 border border-paper-200 p-8 hover:border-green-300 transition-colors">
             <span className="text-ink-400 text-xs font-bold uppercase tracking-widest mb-3 block">04</span>
             <h2 className="font-editorial text-2xl text-ink-950 mb-3 group-hover:text-green-800 transition-colors">Perikanan</h2>
-            <p className="text-ink-600 mb-6">Sumber daya perikanan sungai maupun budidaya masyarakat.</p>
+            <p className="text-ink-600 mb-6">Enam mata pencaharian warga tercatat pada profil desa; sektor perikanan bukan di antaranya.</p>
             <div className="text-sm font-semibold text-green-700 flex items-center gap-1 group-hover:gap-2 transition-all">Jelajahi &rarr;</div>
           </Link>
           
           <Link href="/potensi/sumber-daya-alam" className="group bg-paper-50 border border-paper-200 p-8 hover:border-green-300 transition-colors">
             <span className="text-ink-400 text-xs font-bold uppercase tracking-widest mb-3 block">05</span>
             <h2 className="font-editorial text-2xl text-ink-950 mb-3 group-hover:text-green-800 transition-colors">Sumber Daya Alam</h2>
-            <p className="text-ink-600 mb-6">Potensi alam dan lingkungan yang dapat dikelola secara berkelanjutan.</p>
+            <p className="text-ink-600 mb-6">Luas {`7.125,816`} Ha, ketinggian 0–500 mdpl, curah hujan 177,5 mm/tahun, dan suhu 22°C–31°C.</p>
             <div className="text-sm font-semibold text-green-700 flex items-center gap-1 group-hover:gap-2 transition-all">Jelajahi &rarr;</div>
           </Link>
         </div>

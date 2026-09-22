@@ -57,10 +57,12 @@ export default function BottomNav() {
     };
   }, [lastScrollY, isMoreMenuOpen]);
 
-  // Tutup menu saat rute berubah
-  useEffect(() => {
+  // Tutup menu saat rute berubah (disesuaikan saat render, bukan di dalam effect)
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
     setIsMoreMenuOpen(false);
-  }, [pathname]);
+  }
 
   const moreMenuItems = [
     { name: 'Potensi', path: '/potensi', icon: Sprout },

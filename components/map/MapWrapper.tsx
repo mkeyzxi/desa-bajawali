@@ -1,9 +1,10 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import type { ComponentProps } from 'react';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
-export default function MapWrapper(props: any) {
+export default function MapWrapper(props: ComponentProps<typeof Map>) {
   return <Map {...props} />;
 }

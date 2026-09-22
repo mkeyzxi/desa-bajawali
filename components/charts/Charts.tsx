@@ -13,8 +13,7 @@ import {
   Legend,
   ChartOptions
 } from 'chart.js';
-import { Line, Bar, Doughnut } from 'react-chartjs-2';
-import { chartBeritaBulan, chartKategoriBerita } from '@/data/dummy';
+import { Bar, Doughnut } from 'react-chartjs-2';
 
 // Register Chart.js components
 ChartJS.register(
@@ -42,6 +41,7 @@ const colors = {
   ink400: '#8A938D'
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const commonOptions: ChartOptions<any> = {
   responsive: true,
   maintainAspectRatio: false,
@@ -108,61 +108,6 @@ const gridOptions = {
     }
   }
 };
-
-export function BeritaLineChart() {
-  const data = {
-    labels: chartBeritaBulan.map(d => d.month),
-    datasets: [
-      {
-        label: 'Jumlah Berita',
-        data: chartBeritaBulan.map(d => d.total),
-        borderColor: colors.green700,
-        backgroundColor: colors.green700,
-        borderWidth: 2,
-        tension: 0.1,
-        pointRadius: 4,
-        pointBackgroundColor: '#ffffff',
-        pointBorderColor: colors.green700,
-        pointBorderWidth: 2,
-      },
-    ],
-  };
-
-  const options = {
-    ...commonOptions,
-    ...gridOptions,
-    plugins: {
-      ...commonOptions.plugins,
-      legend: {
-        display: false
-      }
-    }
-  };
-
-  return <div className="w-full h-full"><Line options={options} data={data} /></div>;
-}
-
-export function KategoriDoughnutChart() {
-  const data = {
-    labels: chartKategoriBerita.map(d => d.category),
-    datasets: [
-      {
-        data: chartKategoriBerita.map(d => d.total),
-        backgroundColor: [
-          colors.green700,
-          colors.clay,
-          colors.sun,
-          colors.blueMap,
-          colors.green300,
-        ],
-        borderWidth: 0,
-        hoverOffset: 4
-      },
-    ],
-  };
-
-  return <div className="w-full h-full"><Doughnut options={commonOptions} data={data} /></div>;
-}
 
 export function KelompokUmurBarChart() {
   const data = {
@@ -257,7 +202,7 @@ export function StatusPernikahanPieChart() {
 
 export function DistribusiWilayahBarChart() {
   const data = {
-    labels: ['Dusun Kerta', 'Dusun Makmur', 'Lestari', 'Mandiri'],
+    labels: ['Dusun Kerta', 'Dusun Makmur', 'Dusun Lestari', 'Dusun Mandiri'],
     datasets: [
       {
         label: 'Populasi',
@@ -281,5 +226,26 @@ export function DistribusiWilayahBarChart() {
   };
 
   return <div className="w-full h-full"><Bar options={options} data={data} /></div>;
+}
+
+export function LembagaEkonomiDoughnutChart() {
+  const data = {
+    labels: ['Gapoktan', 'BUMDesa', 'Kelompok Tani', 'Kelompok Ternak'],
+    datasets: [
+      {
+        data: [1, 1, 10, 1],
+        backgroundColor: [
+          colors.green700,
+          colors.clay,
+          colors.sun,
+          colors.blueMap,
+        ],
+        borderWidth: 0,
+        hoverOffset: 4
+      },
+    ],
+  };
+
+  return <div className="w-full h-full"><Doughnut options={commonOptions} data={data} /></div>;
 }
 

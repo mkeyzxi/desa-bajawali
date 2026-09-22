@@ -3,7 +3,6 @@
 import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import {Menu} from 'lucide-react'
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -97,7 +96,7 @@ export default function Navbar() {
             <div className="absolute top-[100%] left-0 w-56 bg-paper-50 border border-paper-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col p-2 rounded-md translate-y-2 group-hover:translate-y-0">
               {[
                 {name: 'Sejarah', path: '/profil/sejarah'},
-                {name: 'Visi & Misi', path: '/profil/visi-misi'},
+                {name: 'Moto & Program', path: '/profil/visi-misi'},
                 {name: 'Geografis', path: '/profil/geografis'},
                 {name: 'Demografi', path: '/profil/demografi'},
                 {name: 'Pemerintahan', path: '/profil/struktur-pemerintahan'},

@@ -1,4 +1,4 @@
-import { desaInfo } from "@/data/dummy";
+import { desaInfo, batasWilayah } from "@/data/dummy";
 import Map from '@/components/map/MapWrapper';
 
 export const metadata = {
@@ -24,29 +24,33 @@ export default function GeografisPage() {
             </p>
             
             <p>
-              Dengan luas wilayah sebesar <strong>{desaInfo.luasWilayah} km²</strong> (merujuk pada kandidat data terverifikasi BPS), kawasan ini memiliki komposisi lahan yang bervariasi.
+              Desa Bajawali memiliki luas wilayah sebesar <strong>{desaInfo.luasWilayah} Ha</strong> yang terbagi menjadi {desaInfo.dusun} dusun dan {desaInfo.rt} RT, dengan seluruh wilayahnya berada pada ketinggian {desaInfo.ketinggian} meter di atas permukaan laut.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12 not-prose">
               <div className="border border-paper-200 p-6 rounded-md">
                 <div className="text-xs font-bold uppercase tracking-widest text-ink-400 mb-2">Iklim</div>
-                <div className="font-editorial text-2xl text-ink-950 mb-2">Tropis</div>
-                <p className="text-sm text-ink-600">Curah hujan sedang dengan dua musim utama.</p>
+                <div className="font-editorial text-2xl text-ink-950 mb-2">{desaInfo.suhu}</div>
+                <p className="text-sm text-ink-600">Suhu rata-rata dengan curah hujan {desaInfo.curahHujan}.</p>
               </div>
               <div className="border border-paper-200 p-6 rounded-md">
                 <div className="text-xs font-bold uppercase tracking-widest text-ink-400 mb-2">Topografi</div>
-                <div className="font-editorial text-2xl text-ink-950 mb-2">Dataran Rendah</div>
-                <p className="text-sm text-ink-600">Sebagian besar wilayah cocok untuk pertanian.</p>
+                <div className="font-editorial text-2xl text-ink-950 mb-2">{desaInfo.ketinggian}</div>
+                <p className="text-sm text-ink-600">Ketinggian wilayah dari permukaan laut.</p>
               </div>
             </div>
 
             <h2>Batas Wilayah</h2>
-            <ul>
-              <li><strong>Utara:</strong> [Menunggu Data Validasi]</li>
-              <li><strong>Selatan:</strong> [Menunggu Data Validasi]</li>
-              <li><strong>Timur:</strong> [Menunggu Data Validasi]</li>
-              <li><strong>Barat:</strong> [Menunggu Data Validasi]</li>
-            </ul>
+            <div className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+              {batasWilayah.map((batas) => (
+                <div key={batas.arah} className="border border-paper-200 bg-paper-50 p-5 rounded-md">
+                  <div className="text-xs font-bold uppercase tracking-widest text-green-700 mb-1">
+                    {batas.arah}
+                  </div>
+                  <div className="font-editorial text-lg text-ink-950">{batas.batas}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -59,9 +63,6 @@ export default function GeografisPage() {
               <p className="font-semibold text-ink-950">Koordinat Referensi</p>
               <p className="text-ink-600">-1.4904673, 119.3656846</p>
             </div>
-          </div>
-          <div className="mt-4 p-4 bg-sun/10 border-l-2 border-sun text-sm text-ink-800">
-            <strong>Catatan peta:</strong> Peta ini menggunakan Google Maps untuk menampilkan batas administratif wilayah secara langsung sesuai ketersediaan data pemetaan publik.
           </div>
         </div>
 
