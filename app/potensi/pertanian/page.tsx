@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { lembagaPerekonomian } from "@/data/dummy";
 
 export const metadata = {
   title: "Potensi Pertanian Desa Bajawali",
@@ -26,7 +27,7 @@ export default function PotensiPertanianPage() {
             Pertanian & Perkebunan
           </h1>
           <p className="text-ink-800 text-lg leading-relaxed">
-            Sektor pertanian dan perkebunan merupakan tulang punggung perekonomian sebagian besar masyarakat Desa Bajawali. Kondisi tanah yang subur mendukung berbagai komoditas utama.
+            Sektor pertanian dan perkebunan merupakan tulang punggung perekonomian sebagian besar masyarakat Desa Bajawali, dengan hasil pertanian kelapa sawit sebagai komoditas andalan.
           </p>
         </div>
 
@@ -38,40 +39,43 @@ export default function PotensiPertanianPage() {
             fill
             className="object-cover"
           />
-          <div className="absolute bottom-4 left-4 bg-white/90 p-2 text-xs text-ink-800 rounded-sm">
-            Lanskap persawahan — (Foto Ilustrasi Sementara)
-          </div>
         </div>
 
         {/* Article Body */}
         <div className="max-w-3xl mx-auto prose prose-xl prose-p:text-ink-800 prose-headings:font-editorial prose-headings:text-ink-950 max-w-none">
-          <h2>Komoditas Utama</h2>
+          <h2>Komoditas Andalan</h2>
           <p>
-            Secara historis, komoditas utama dari desa ini mencakup padi sawah, serta beberapa tanaman perkebunan seperti kelapa dalam dan kelapa sawit yang dikelola baik oleh rakyat maupun bermitra dengan pihak swasta.
+            Hasil pertanian kelapa sawit menjadi komoditas andalan masyarakat Desa Bajawali. Meningkatnya daya beli masyarakat menandakan sektor pertanian dan perkebunan terus tumbuh sebagai penopang ekonomi warga.
           </p>
           <p>
-            Masyarakat secara turun temurun menggarap lahan ini dengan sistem yang terus berkembang, menyatukan kearifan lokal dengan inovasi pertanian modern untuk menjaga hasil yang maksimal.
+            Secara mata pencaharian, sebagian besar warga bekerja sebagai petani pekebun dan buruh tani, yang didukung oleh berkembangnya usaha mikro, kecil, dan menengah (UMKM) di masyarakat.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12 not-prose">
             <div className="border border-paper-200 p-6 rounded-md bg-paper-50">
-              <div className="font-editorial text-3xl text-ink-950 mb-2">Padi Sawah</div>
-              <p className="text-sm text-ink-600">Menjadi tumpuan ketahanan pangan warga lokal dengan beberapa kali masa panen per tahun.</p>
+              <div className="font-editorial text-3xl text-ink-950 mb-2">Kelapa Sawit</div>
+              <p className="text-sm text-ink-600">Komoditas pertanian andalan masyarakat Desa Bajawali.</p>
             </div>
             <div className="border border-paper-200 p-6 rounded-md bg-paper-50">
-              <div className="font-editorial text-3xl text-ink-950 mb-2">Perkebunan</div>
-              <p className="text-sm text-ink-600">Komoditas bernilai jual yang sebagian dikirim ke luar daerah.</p>
+              <div className="font-editorial text-3xl text-ink-950 mb-2">10 Kelompok Tani</div>
+              <p className="text-sm text-ink-600">Didukung 1 Gapoktan, 1 BUMDesa, dan 1 kelompok ternak.</p>
             </div>
           </div>
 
-          <h2>Tantangan dan Harapan</h2>
+          <h2>Dukungan Lembaga Desa</h2>
           <p>
-            Tantangan terbesar yang dihadapi petani saat ini adalah memastikan ketersediaan pupuk dan stabilitas harga jual. Melalui kelompok tani (Poktan), warga terus berupaya saling mendukung untuk meningkatkan kapasitas produksi dan mengelola lahan secara berkelanjutan.
+            Pengelolaan pertanian didukung lembaga perekonomian desa berikut:
           </p>
-
-          <div className="mt-8 p-4 bg-sun/10 border-l-2 border-sun text-sm text-ink-800">
-            <strong>Catatan Data:</strong> Detail produksi dan jenis tanaman pertanian akan diperbarui setelah data komprehensif dari dinas pertanian/pemerintah desa divalidasi.
-          </div>
+          <ul>
+            {lembagaPerekonomian.map((l) => (
+              <li key={l.nama}>
+                <strong>{l.nama}:</strong> {l.jumlah} {l.satuan}
+              </li>
+            ))}
+          </ul>
+          <p>
+            Melalui kelompok tani tersebut, warga terus berupaya saling mendukung untuk meningkatkan kapasitas produksi dan mengelola lahan secara berkelanjutan.
+          </p>
         </div>
 
         <div className="max-w-4xl mx-auto mt-20 pt-8 border-t border-paper-200 flex justify-center">

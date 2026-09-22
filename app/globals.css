@@ -59,13 +59,15 @@
   /* Override shadow & radius to avoid AI slop look */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 8px 30px rgba(20, 40, 32, 0.06); /* Civic shadow */
+  --shadow-lg: 0 8px 30px rgba(20, 40, 32, 0.06);
+  /* Civic shadow */
   --shadow-xl: 0 20px 25px -5px rgba(20, 40, 32, 0.08);
 
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
-  --radius-xl: 10px; /* Don't exceed 10px */
+  --radius-xl: 10px;
+  /* Don't exceed 10px */
 }
 
 /* Base resets for Civic Editorial look */
@@ -76,12 +78,19 @@ body {
   line-height: 1.65;
 }
 
-h1, h2, h3, h4, h5, h6, .font-editorial {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-editorial {
   font-family: var(--font-editorial), serif;
   color: var(--ink-950);
 }
 
-h1, h2 {
+h1,
+h2 {
   letter-spacing: -0.02em;
 }
 

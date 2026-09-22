@@ -8,9 +8,9 @@ export const metadata = {
 export default function ProfilIndexPage() {
   const menus = [
     { name: "Sejarah Desa", path: "/profil/sejarah", desc: "Menelusuri rekam jejak dan asal usul terbentuknya Desa Bajawali." },
-    { name: "Visi & Misi", path: "/profil/visi-misi", desc: "Arah kebijakan dan tujuan pembangunan desa ke depan." },
+    { name: "Moto & Program", path: "/profil/visi-misi", desc: "Moto desa dan lima bidang kerja pemerintahan Desa Bajawali." },
     { name: "Kondisi Geografis", path: "/profil/geografis", desc: "Informasi iklim, topografi, dan letak wilayah Desa Bajawali." },
-    { name: "Demografi", path: "/profil/demografi", desc: "Statistik kependudukan, kelompok umur, dan kepadatan penduduk." },
+    { name: "Demografi", path: "/profil/demografi", desc: "Statistik kependudukan, kelompok umur, dan sebaran wilayah." },
     { name: "Struktur Pemerintahan", path: "/profil/struktur-pemerintahan", desc: "Bagan organisasi dan aparatur Pemerintah Desa Bajawali." }
   ];
 

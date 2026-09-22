@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {desaInfo, beritaDummy} from '@/data/dummy'
 import HeroCarousel from '@/components/layout/HeroCarousel'
-import {ArrowRight} from 'lucide-react'
 
 export default function Home() {
   const featureNews = beritaDummy[0]
@@ -26,34 +25,29 @@ export default function Home() {
               </h2>
               <div className="prose prose-xl prose-p:text-ink-800 prose-p:leading-relaxed max-w-none">
                 <p>
-                  Desa Bajawali berada di Kecamatan Lariang, Kabupaten Pasangkayu, Provinsi Sulawesi
-                  Barat. Sebagai bagian dari wilayah Lariang, Bajawali memiliki karakter wilayah
-                  yang perlu dikenali bukan hanya melalui data statistik, tetapi juga melalui
-                  kehidupan masyarakat, aktivitas ekonomi, pelayanan pemerintahan, dan potensi lokal
-                  yang berkembang dari waktu ke waktu.
+                  Desa Bajawali berada di Kecamatan {desaInfo.kecamatan}, Kabupaten{' '}
+                  {desaInfo.kabupaten}, Provinsi {desaInfo.provinsi}. Desa Bajawali memiliki luas
+                  wilayah {desaInfo.luasWilayah} Ha dengan ketinggian {desaInfo.ketinggian} mdpl,
+                  curah hujan {desaInfo.curahHujan}, dan suhu rata-rata {desaInfo.suhu}.
                 </p>
                 <p>
-                  Dalam pengembangannya, profil <strong>Desa Bajawali Lariang</strong> akan
-                  diperkaya dengan informasi yang telah divalidasi oleh pemerintah desa sehingga
-                  masyarakat dapat menggunakan website sebagai rujukan informasi publik. Konten
-                  mengenai karakteristik Bajawali disusun berdasarkan kondisi nyata di lapangan,
-                  menjadikannya dokumentasi pertumbuhan desa dari waktu ke waktu.
+                  Desa Bajawali dihuni <strong>{desaInfo.penduduk} jiwa</strong> yang tergabung
+                  dalam <strong>{desaInfo.kk} kepala keluarga</strong>, tersebar di{' '}
+                  {desaInfo.dusun} dusun dan {desaInfo.rt} RT. Nama Bajawali berasal dari kata
+                  Sanskerta <strong>JAVA</strong> dan <strong>BALI</strong> yang berarti
+                  &quot;Kelahiran dan Tempat Berpijak&quot;, dengan moto desa{' '}
+                  <strong>{desaInfo.moto}</strong>.
                 </p>
-                <div className="mt-4 p-4 bg-sun/10 border-l-2 border-sun text-sm text-ink-800">
-                  <strong>Catatan fase awal:</strong> paragraf di atas adalah draft editorial dan
-                  harus divalidasi serta disesuaikan dengan narasi resmi pemerintah desa sebelum
-                  dipublikasikan.
-                </div>
               </div>
             </div>
 
             <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-8">
               <div className="border-t border-paper-200 pt-4">
                 <div className="font-editorial text-4xl text-ink-950 mb-1">
-                  {desaInfo.luasWilayah} km²
+                  {desaInfo.luasWilayah} Ha
                 </div>
                 <div className="text-sm font-semibold text-ink-600">Luas wilayah</div>
-                <div className="text-xs text-ink-400 mt-1">Kandidat data terverifikasi BPS</div>
+                <div className="text-xs text-ink-400 mt-1">Profil Desa {desaInfo.tahunData}</div>
               </div>
               <div className="border-t border-paper-200 pt-4">
                 <div className="font-editorial text-4xl text-ink-950 mb-1">
@@ -95,7 +89,7 @@ export default function Home() {
               </div>
             </div>
             <div className="py-8 md:py-12 px-4 md:px-6 flex flex-col items-center text-center border-l md:border-l-0 border-paper-200">
-              <div className="text-sm font-semibold text-ink-600 mb-2">RT / RW</div>
+              <div className="text-sm font-semibold text-ink-600 mb-2">RT</div>
               <div className="font-editorial text-4xl md:text-5xl font-semibold text-ink-950 mb-2">
                 {desaInfo.rt}
               </div>
@@ -200,9 +194,9 @@ export default function Home() {
               Yang tumbuh dari tanah dan kerja masyarakat.
             </h2>
             <p className="text-ink-800">
-              Potensi Desa Bajawali akan ditampilkan berdasarkan kondisi nyata wilayah dan aktivitas
-              masyarakat. Setiap kategori akan dilengkapi informasi, foto, dan data yang telah
-              divalidasi.
+              Potensi Desa Bajawali bertumpu pada hasil pertanian kelapa sawit sebagai komoditas
+              andalan, ditemani berkembangnya usaha mikro, kecil, dan menengah (UMKM), 10 kelompok
+              tani, serta partisipasi masyarakat dalam gotong royong dan kegiatan ekonomi desa.
             </p>
           </div>
 
@@ -226,7 +220,8 @@ export default function Home() {
                 </span>
                 <h3 className="font-editorial text-2xl md:text-3xl text-white mb-2">Pertanian</h3>
                 <p className="text-white/90 mb-4 max-w-md hidden md:block">
-                  Informasi mengenai komoditas dan aktivitas perkebunan warga yang tervalidasi.
+                  Kelapa sawit sebagai komoditas andalan warga, ditopang 10 kelompok tani dan 1
+                  Gapoktan.
                 </p>
                 <div className="text-sm font-semibold text-white flex items-center gap-1">
                   <span className="border-b border-white group-hover:border-transparent transition-colors">

@@ -1,13 +1,12 @@
-import {desaInfo} from '@/data/dummy'
+import {desaInfo, lembagaPerekonomian, saranaDesa, mataPencaharian} from '@/data/dummy'
 import Image from 'next/image'
 import {
-  BeritaLineChartWrapper,
-  KategoriDoughnutChartWrapper,
   KelompokUmurBarChartWrapper,
   AgamaDoughnutChartWrapper,
   SukuDoughnutChartWrapper,
   StatusPernikahanPieChartWrapper,
   DistribusiWilayahBarChartWrapper,
+  LembagaEkonomiDoughnutChartWrapper,
 } from '@/components/charts/ChartsWrapper'
 
 export const metadata = {
@@ -29,13 +28,9 @@ export default function DataDesaPage() {
               Data & Statistik
             </h1>
             <p className="text-ink-800 text-lg leading-relaxed mb-6">
-              Halaman ini menyajikan statistik dan indikator Desa Bajawali dalam bentuk angka, grafik,
-              dan keterangan sumber.
+              Halaman ini menyajikan statistik dan indikator Desa Bajawali dalam bentuk angka,
+              grafik, dan keterangan sumber.
             </p>
-            <div className="p-4 bg-sun/10 border-l-2 border-sun text-sm text-ink-800 inline-block">
-              <strong>Status Data:</strong> Angka kependudukan menggunakan data tervalidasi tahun
-              2026.
-            </div>
           </div>
 
           {/* Profil Kepala Desa */}
@@ -49,12 +44,15 @@ export default function DataDesaPage() {
               />
             </div>
             <div className="mb-4">
-              <h3 className="font-editorial text-2xl text-ink-950 mb-1">Ketut Langga</h3>
-              <div className="text-xs font-bold uppercase tracking-widest text-green-700">Kepala Desa Bajawali</div>
+              <h3 className="font-editorial text-2xl text-ink-950 mb-1">Ketut Langga, S.Ag</h3>
+              <div className="text-xs font-bold uppercase tracking-widest text-green-700">
+                Kepala Desa Bajawali
+              </div>
             </div>
             <div className="relative">
               <p className="text-ink-700 leading-relaxed italic text-[15px] relative z-10">
-                "Data dan statistik ini merupakan bentuk komitmen kami terhadap transparansi untuk membangun Desa Bajawali yang lebih terukur, maju, dan sejahtera."
+                &quot;Data dan statistik ini merupakan bentuk komitmen kami terhadap transparansi
+                untuk membangun Desa Bajawali yang lebih terukur, maju, dan sejahtera.&quot;
               </p>
             </div>
           </div>
@@ -79,10 +77,10 @@ export default function DataDesaPage() {
               Luas Wilayah
             </div>
             <div className="font-editorial text-4xl text-ink-950 mb-2">
-              {desaInfo.luasWilayah} <span className="text-lg text-ink-400 font-sans">km²</span>
+              {desaInfo.luasWilayah} <span className="text-lg text-ink-400 font-sans">Ha</span>
             </div>
             <div className="text-xs text-ink-600 bg-paper-100 inline-block px-2 py-1 rounded-sm">
-              BPS &bull; Kandidat sumber
+              Profil Desa &bull; {desaInfo.tahunData}
             </div>
           </div>
 
@@ -122,7 +120,7 @@ export default function DataDesaPage() {
                   Kelompok Umur Penduduk
                 </h3>
                 <p className="text-sm text-ink-600">
-                  Distribusi usia penduduk Desa Bajawali (Data valid 2026)
+                  Distribusi usia penduduk Desa Bajawali (Profil Desa 2026)
                 </p>
               </div>
               <div className="h-[350px] w-full">
@@ -132,25 +130,37 @@ export default function DataDesaPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-            {/* Chart: Kategori Berita */}
+            {/* Chart: Lembaga Perekonomian */}
             <div className="lg:col-span-1 bg-paper-50 border border-paper-200 p-6 md:p-8 rounded-md flex flex-col">
               <div className="mb-6">
-                <h3 className="font-editorial text-2xl text-ink-950 mb-2">Fokus Kegiatan</h3>
-                <p className="text-sm text-ink-600">Proporsi kategori publikasi.</p>
+                <h3 className="font-editorial text-2xl text-ink-950 mb-2">Lembaga Perekonomian</h3>
+                <p className="text-sm text-ink-600">Jumlah kelompok ekonomi desa.</p>
               </div>
               <div className="flex-1 h-[250px] w-full">
-                <KategoriDoughnutChartWrapper />
+                <LembagaEkonomiDoughnutChartWrapper />
               </div>
             </div>
 
-            {/* Additional Text Info */}
+            {/* Mata Pencaharian */}
             <div className="lg:col-span-2 border border-paper-200 p-6 md:p-8 rounded-md flex flex-col justify-center bg-paper-100">
-              <h3 className="font-editorial text-3xl text-ink-950 mb-4">Pengembangan Data</h3>
+              <h3 className="font-editorial text-3xl text-ink-950 mb-4">Mata Pencaharian Warga</h3>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {mataPencaharian.map((pekerjaan) => (
+                  <span
+                    key={pekerjaan}
+                    className="text-sm font-semibold text-ink-800 bg-paper-50 border border-paper-200 px-3 py-1.5 rounded-full"
+                  >
+                    {pekerjaan}
+                  </span>
+                ))}
+              </div>
               <p className="text-ink-800 leading-relaxed mb-6">
-                Kedepannya, halaman Data Desa ini akan diintegrasikan dengan sistem informasi
-                pemerintah desa, sehingga indikator seperti tingkat pendidikan, mata pencaharian
-                utama, dan potensi ekonomi dapat dipantau secara langsung oleh publik secara
-                transparan.
+                Untuk mendukung perekonomian warga, Desa Bajawali memiliki{' '}
+                {lembagaPerekonomian
+                  .map((l) => `${l.jumlah} ${l.nama.toLowerCase()}`)
+                  .join(', ')
+                  .replace(/, ([^,]*)$/, ', dan $1')}
+                .
               </p>
               <div className="text-sm font-semibold text-green-700">Pemerintah Desa Bajawali</div>
             </div>
@@ -162,7 +172,7 @@ export default function DataDesaPage() {
             <div className="bg-paper-50 border border-paper-200 p-6 md:p-8 rounded-md flex flex-col">
               <div className="mb-6">
                 <h3 className="font-editorial text-2xl text-ink-950 mb-2">Kepercayaan & Agama</h3>
-                <p className="text-sm text-ink-600">Distribusi pemeluk agama (Data valid 2026)</p>
+                <p className="text-sm text-ink-600">Distribusi pemeluk agama (Profil Desa 2026)</p>
               </div>
               <div className="flex-1 h-[250px] w-full">
                 <AgamaDoughnutChartWrapper />
@@ -173,7 +183,7 @@ export default function DataDesaPage() {
             <div className="bg-paper-50 border border-paper-200 p-6 md:p-8 rounded-md flex flex-col">
               <div className="mb-6">
                 <h3 className="font-editorial text-2xl text-ink-950 mb-2">Komposisi Suku</h3>
-                <p className="text-sm text-ink-600">Sebaran Suku Warga (Data valid 2026)</p>
+                <p className="text-sm text-ink-600">Sebaran Suku Warga (Profil Desa 2026)</p>
               </div>
               <div className="flex-1 h-[250px] w-full">
                 <SukuDoughnutChartWrapper />
@@ -184,7 +194,7 @@ export default function DataDesaPage() {
             <div className="bg-paper-50 border border-paper-200 p-6 md:p-8 rounded-md flex flex-col">
               <div className="mb-6">
                 <h3 className="font-editorial text-2xl text-ink-950 mb-2">Status Pernikahan</h3>
-                <p className="text-sm text-ink-600">Kawin vs Belum Kawin (Data valid 2026)</p>
+                <p className="text-sm text-ink-600">Kawin vs Belum Kawin (Profil Desa 2026)</p>
               </div>
               <div className="flex-1 h-[250px] w-full">
                 <StatusPernikahanPieChartWrapper />
@@ -195,11 +205,53 @@ export default function DataDesaPage() {
             <div className="bg-paper-50 border border-paper-200 p-6 md:p-8 rounded-md flex flex-col">
               <div className="mb-6">
                 <h3 className="font-editorial text-2xl text-ink-950 mb-2">Distribusi Wilayah</h3>
-                <p className="text-sm text-ink-600">Sebaran Populasi per Dusun (Data valid 2026)</p>
+                <p className="text-sm text-ink-600">Sebaran Populasi per Dusun (Profil Desa 2026)</p>
               </div>
               <div className="flex-1 h-[300px] w-full">
                 <DistribusiWilayahBarChartWrapper />
               </div>
+            </div>
+          </div>
+
+          {/* Sarana & Prasarana */}
+          <div className="pt-12 border-t border-paper-200">
+            <div className="mb-8">
+              <h3 className="font-editorial text-2xl md:text-3xl text-ink-950 mb-2">
+                Sarana & Prasarana Desa
+              </h3>
+              <p className="text-sm text-ink-600">
+                Fasilitas dan sarana desa berdasarkan Profil Desa {desaInfo.tahunData}.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {saranaDesa.map((kategori) => (
+                <div
+                  key={kategori.kategori}
+                  className="bg-paper-50 border border-paper-200 p-6 rounded-md"
+                >
+                  <div className="text-xs font-bold uppercase tracking-widest text-green-700 mb-4">
+                    {kategori.kategori}
+                  </div>
+                  <ul className="flex flex-col gap-3">
+                    {kategori.items.map((item) => (
+                      <li
+                        key={item.nama}
+                        className="flex items-baseline justify-between gap-3 border-b border-paper-200 pb-2 last:border-b-0 last:pb-0"
+                      >
+                        <span className="text-sm text-ink-800">{item.nama}</span>
+                        {item.jumlah !== undefined ? (
+                          <span className="font-editorial text-lg text-ink-950 whitespace-nowrap">
+                            {item.jumlah}{' '}
+                            <span className="text-xs font-sans text-ink-400">{item.satuan}</span>
+                          </span>
+                        ) : (
+                          <span className="text-xs text-ink-400">tersedia</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </div>

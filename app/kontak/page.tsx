@@ -1,4 +1,4 @@
-import { Mail, Phone, Clock, MapPin } from 'lucide-react';
+import { Clock, MapPin } from 'lucide-react';
 import Map from '@/components/map/MapWrapper';
 
 export const metadata = {
@@ -42,23 +42,6 @@ export default function KontakPage() {
                   </div>
                 </li>
                 
-                <li className="flex gap-4 items-start">
-                  <Phone className="text-green-700 mt-1 shrink-0" size={20} />
-                  <div>
-                    <strong className="block text-ink-950 font-medium mb-1">Telepon</strong>
-                    <span className="text-ink-800 text-sm block mb-1">(Data akan diisi)</span>
-                    <span className="text-ink-400 text-xs block">Menunggu validasi info kontak resmi</span>
-                  </div>
-                </li>
-
-                <li className="flex gap-4 items-start">
-                  <Mail className="text-green-700 mt-1 shrink-0" size={20} />
-                  <div>
-                    <strong className="block text-ink-950 font-medium mb-1">Email</strong>
-                    <span className="text-ink-800 text-sm block mb-1">(Data akan diisi)</span>
-                  </div>
-                </li>
-
                 <li className="flex gap-4 items-start">
                   <Clock className="text-green-700 mt-1 shrink-0" size={20} />
                   <div>

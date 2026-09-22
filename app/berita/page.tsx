@@ -83,10 +83,6 @@ export default function BeritaPage() {
             </Link>
           ))}
         </div>
-        
-        <div className="mt-12 text-center text-sm text-ink-400">
-          *Menampilkan berita dummy untuk keperluan demo layout.
-        </div>
 
       </div>
     </div>

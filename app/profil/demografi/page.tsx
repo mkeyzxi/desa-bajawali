@@ -1,4 +1,4 @@
-import { desaInfo } from "@/data/dummy";
+import { desaInfo, mataPencaharian } from "@/data/dummy";
 
 export const metadata = {
   title: "Demografi Desa Bajawali",
@@ -19,10 +19,15 @@ export default function DemografiPage() {
           
           <div className="prose prose-xl prose-p:text-ink-800 prose-headings:font-editorial prose-headings:text-ink-950 max-w-none mb-12">
             <p>
-              Berdasarkan data terkini tahun {desaInfo.tahunData}, {desaInfo.name} memiliki total penduduk sebanyak <strong>{desaInfo.penduduk} jiwa</strong> yang tergabung dalam <strong>{desaInfo.kk} Kepala Keluarga (KK)</strong>.
+              Berdasarkan data profil tahun {desaInfo.tahunData}, {desaInfo.name} memiliki total penduduk sebanyak <strong>{desaInfo.penduduk} jiwa</strong> yang tergabung dalam <strong>{desaInfo.kk} Kepala Keluarga (KK)</strong>.
             </p>
             <p>
-              Sebagian besar penduduk tersebar di {desaInfo.dusun} dusun dan {desaInfo.rt} Rukun Tetangga (RT). Mayoritas penduduk bekerja di sektor pertanian dan perkebunan yang menjadi penopang utama ekonomi wilayah.
+              Penduduk tersebar di {desaInfo.dusun} dusun dan {desaInfo.rt} Rukun Tetangga (RT). Mata pencaharian warga antara lain {mataPencaharian.map((m, i) => (
+                <span key={m}>
+                  {i > 0 && i < mataPencaharian.length - 1 ? ', ' : i === mataPencaharian.length - 1 ? ', dan ' : ''}
+                  <strong>{m.toLowerCase()}</strong>
+                </span>
+              ))}, dengan sektor pertanian dan perkebunan sebagai penopang utama ekonomi wilayah.
             </p>
           </div>
 
@@ -34,56 +39,73 @@ export default function DemografiPage() {
               <div className="flex gap-4 border-t border-paper-200 pt-4 mt-6">
                 <div className="flex-1">
                   <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Laki-laki</div>
-                  <div className="font-editorial text-2xl text-ink-950">411</div>
+                  <div className="font-editorial text-2xl text-ink-950">{desaInfo.lakiLaki}</div>
                 </div>
                 <div className="flex-1">
                   <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Perempuan</div>
-                  <div className="font-editorial text-2xl text-ink-950">354</div>
+                  <div className="font-editorial text-2xl text-ink-950">{desaInfo.perempuan}</div>
                 </div>
               </div>
             </div>
 
             <div className="bg-paper-50 border border-paper-200 p-8 rounded-md">
-              <div className="text-sm font-semibold text-ink-600 mb-2">Kepadatan Wilayah</div>
+              <div className="text-sm font-semibold text-ink-600 mb-2">Kepala Keluarga</div>
               <div className="font-editorial text-5xl font-semibold text-ink-950 mb-4">
-                109 <span className="text-2xl text-ink-400 font-sans">jiwa/km²</span>
+                {desaInfo.kk} <span className="text-2xl text-ink-400 font-sans">KK</span>
               </div>
               
               <div className="flex gap-4 border-t border-paper-200 pt-4 mt-6">
                 <div className="flex-1">
-                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Kepala Keluarga</div>
-                  <div className="font-editorial text-2xl text-ink-950">{desaInfo.kk}</div>
-                </div>
-                <div className="flex-1">
                   <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Jumlah Dusun</div>
                   <div className="font-editorial text-2xl text-ink-950">{desaInfo.dusun}</div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Jumlah RT</div>
+                  <div className="font-editorial text-2xl text-ink-950">{desaInfo.rt}</div>
                 </div>
               </div>
             </div>
 
             <div className="bg-paper-50 border border-paper-200 p-8 rounded-md md:col-span-2 lg:col-span-1">
-              <div className="text-sm font-semibold text-ink-600 mb-2">Hubungan Keluarga</div>
-              <div className="font-editorial text-5xl font-semibold text-ink-950 mb-4">760 <span className="text-2xl text-ink-400 font-sans">jiwa inti</span></div>
+              <div className="text-sm font-semibold text-ink-600 mb-2">Kelompok Umur Terbanyak</div>
+              <div className="font-editorial text-5xl font-semibold text-ink-950 mb-4">
+                346 <span className="text-2xl text-ink-400 font-sans">jiwa</span>
+              </div>
               
               <div className="flex gap-4 border-t border-paper-200 pt-4 mt-6">
                 <div className="flex-1">
-                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Suami</div>
-                  <div className="font-editorial text-2xl text-ink-950">248</div>
+                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Usia</div>
+                  <div className="font-editorial text-2xl text-ink-950">25–54 th</div>
                 </div>
                 <div className="flex-1">
-                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Istri</div>
-                  <div className="font-editorial text-2xl text-ink-950">200</div>
+                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Usia 0–14</div>
+                  <div className="font-editorial text-2xl text-ink-950">119</div>
                 </div>
                 <div className="flex-1">
-                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Anak</div>
-                  <div className="font-editorial text-2xl text-ink-950">312</div>
+                  <div className="text-xs uppercase tracking-wider text-ink-400 mb-1">Usia 65+</div>
+                  <div className="font-editorial text-2xl text-ink-950">52</div>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div className="p-4 bg-sun/10 border-l-2 border-sun text-sm text-ink-800">
-            <strong>Catatan Data:</strong> Data di atas berdasarkan validasi data desa per tahun {desaInfo.tahunData}.
+
+          <div className="border border-paper-200 bg-paper-50 p-6 md:p-8 rounded-md">
+            <div className="text-xs font-bold uppercase tracking-widest text-ink-400 mb-4">
+              Sebaran Penduduk per Dusun
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { nama: 'Dusun Kerta', jumlah: 164 },
+                { nama: 'Dusun Makmur', jumlah: 350 },
+                { nama: 'Dusun Lestari', jumlah: 174 },
+                { nama: 'Dusun Mandiri', jumlah: 77 },
+              ].map((dusun) => (
+                <div key={dusun.nama}>
+                  <div className="font-editorial text-3xl text-ink-950 mb-1">{dusun.jumlah}</div>
+                  <div className="text-sm font-semibold text-ink-600">{dusun.nama}</div>
+                </div>
+              ))}
+            </div>
           </div>
           
           <div className="mt-12 text-center">

@@ -64,10 +64,6 @@ export default function GaleriPage() {
             </div>
           ))}
         </div>
-        
-        <div className="mt-16 pt-8 border-t border-paper-200 text-center text-sm text-ink-400">
-          *Menampilkan foto contoh (dummy) untuk keperluan desain layout.
-        </div>
 
       </div>
     </div>
