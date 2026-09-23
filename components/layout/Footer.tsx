@@ -140,6 +140,7 @@
 // }
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -147,12 +148,21 @@ export default function Footer() {
       <div className="container mx-auto px-5 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           <div className="md:col-span-1">
-            <Link href="/" className="flex flex-col mb-4">
-              <span className="font-editorial text-xl font-semibold tracking-tight text-ink-950">
-                Desa Bajawali
-              </span>
-              <span className="text-xs font-semibold uppercase tracking-widest text-ink-400">
-                Lariang, Pasangkayu
+            <Link href="/" className="flex items-center gap-3 mb-4">
+              <Image
+                src="/gambar/logo_pasangkayu.png"
+                alt="Lambang Kabupaten Pasangkayu"
+                width={728}
+                height={800}
+                className="h-12 w-auto shrink-0"
+              />
+              <span className="flex flex-col">
+                <span className="font-editorial text-xl font-semibold tracking-tight text-ink-950">
+                  Desa Bajawali
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-widest text-ink-400">
+                  Lariang, Pasangkayu
+                </span>
               </span>
             </Link>
             <p className="text-sm text-ink-600 mb-6 max-w-sm">

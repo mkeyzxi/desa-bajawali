@@ -37,7 +37,7 @@ export default function DataDesaPage() {
           <div className="w-full lg:w-[380px] flex-shrink-0 bg-paper-50 border border-paper-200 p-6 md:p-8 rounded-2xl flex flex-col items-center text-center shadow-sm">
             <div className="w-28 h-28 relative rounded-full overflow-hidden border-4 border-white shadow-sm mb-4">
               <Image
-                src="/gambar/kepala-desa-bajawali.webp"
+                src="/gambar/struktur/kepala-desa-bajawali.webp"
                 alt="Kepala Desa Bajawali"
                 fill
                 className="object-cover object-top"

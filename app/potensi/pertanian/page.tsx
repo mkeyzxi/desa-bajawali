@@ -32,14 +32,14 @@ export default function PotensiPertanianPage() {
         </div>
 
         {/* Feature Image */}
-        <div className="relative aspect-[21/9] w-full mb-16 border border-paper-200 rounded-md overflow-hidden">
+        {/* <div className="relative aspect-[21/9] w-full mb-16 border border-paper-200 rounded-md overflow-hidden">
           <Image 
             src="https://images.pexels.com/photos/1576398/pexels-photo-1576398.jpeg?auto=compress&cs=tinysrgb&w=1200" 
             alt="Pertanian Desa Bajawali" 
             fill
             className="object-cover"
           />
-        </div>
+        </div> */}
 
         {/* Article Body */}
         <div className="max-w-3xl mx-auto prose prose-xl prose-p:text-ink-800 prose-headings:font-editorial prose-headings:text-ink-950 max-w-none">

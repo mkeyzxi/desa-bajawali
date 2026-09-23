@@ -1,5 +1,7 @@
 import { desaInfo, batasWilayah } from "@/data/dummy";
-import Map from '@/components/map/MapWrapper';
+
+const MAP_EMBED_URL =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15953.872540417176!2d119.3557826934073!3d-1.4906304759257518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8cf9abf9303445%3A0xcc92ae06702c7a48!2sBajawali%2C%20Kec.%20Lariang%2C%20Kab.%20Pasangkayu%2C%20Sulawesi%20Barat!5e0!3m2!1sid!2sid!4v1790131615917!5m2!1sid!2sid";
 
 export const metadata = {
   title: "Kondisi Geografis Desa Bajawali",
@@ -58,7 +60,17 @@ export default function GeografisPage() {
         <div className="max-w-5xl mx-auto mt-16">
           <h3 className="font-editorial text-2xl text-ink-950 mb-6">Peta Lokasi</h3>
           <div className="h-[400px] w-full bg-paper-200 border border-paper-200 rounded-lg overflow-hidden relative">
-            <Map latitude={-1.4904673} longitude={119.3656846} zoom={13} />
+            <iframe
+              src={MAP_EMBED_URL}
+              width="600"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Peta Lokasi Desa Bajawali"
+              className="absolute inset-0 h-full w-full"
+            />
             <div className="absolute top-4 right-4 z-[400] bg-white/90 p-3 text-xs shadow-sm border border-paper-200 rounded-md">
               <p className="font-semibold text-ink-950">Koordinat Referensi</p>
               <p className="text-ink-600">-1.4904673, 119.3656846</p>

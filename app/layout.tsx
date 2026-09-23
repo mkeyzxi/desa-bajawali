@@ -18,6 +18,8 @@ const sourceSerif4 = Source_Serif_4({
 export const metadata: Metadata = {
   title: "Website Desa Bajawali",
   description: "Portal informasi resmi Desa Bajawali, Kecamatan Lariang, Kabupaten Pasangkayu, Sulawesi Barat.",
+  // Icons are provided by the file conventions in this directory:
+  // app/favicon.ico, app/icon.png, app/apple-icon.png
 };
 
 export default function RootLayout({

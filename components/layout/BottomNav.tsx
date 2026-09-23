@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   Home,
@@ -90,7 +91,16 @@ export default function BottomNav() {
         } pb-safe`}
       >
         <div className="p-4 border-b border-paper-200 flex justify-between items-center">
-          <h3 className="font-semibold text-ink-950 font-editorial text-lg">Menu Lainnya</h3>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/gambar/logo_pasangkayu.png"
+              alt="Lambang Kabupaten Pasangkayu"
+              width={728}
+              height={800}
+              className="h-9 w-auto shrink-0"
+            />
+            <h3 className="font-semibold text-ink-950 font-editorial text-lg">Menu Lainnya</h3>
+          </div>
           <button 
             onClick={() => setIsMoreMenuOpen(false)}
             className="p-2 text-ink-600 hover:bg-paper-200 rounded-full transition-colors"
@@ -130,7 +140,7 @@ export default function BottomNav() {
 
       {/* Bottom Navigation */}
       <nav 
-        className={`fixed bottom-0 left-0 right-0 bg-paper-50/95 backdrop-blur-md border-t border-paper-200 z-[9999] md:hidden transition-transform duration-300 ease-in-out pb-safe ${
+        className={`fixed bottom-0 left-0 right-0 bg-paper-50/95 backdrop-blur-md border-t border-paper-200 z-[9999] rounded-t-xl md:hidden transition-transform duration-300 ease-in-out pb-safe ${
           isVisible ? 'translate-y-0' : 'translate-y-full'
         }`}
       >

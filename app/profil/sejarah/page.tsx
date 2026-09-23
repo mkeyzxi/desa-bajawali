@@ -19,7 +19,7 @@ export default function SejarahPage() {
           
           <div className="relative aspect-[21/9] w-full mb-12 border border-paper-200 rounded-md overflow-hidden">
             <Image 
-              src="https://images.unsplash.com/photo-1596700810769-cf74a38119eb?q=80&w=1200&auto=format&fit=crop" 
+              src="/gambar/background/background_1.webp" 
               alt="Sejarah Desa Bajawali" 
               fill
               className="object-cover"
