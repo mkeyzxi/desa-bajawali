@@ -154,6 +154,7 @@ export default function Footer() {
                 alt="Lambang Kabupaten Pasangkayu"
                 width={728}
                 height={800}
+                sizes="48px"
                 className="h-12 w-auto shrink-0"
               />
               <span className="flex flex-col">

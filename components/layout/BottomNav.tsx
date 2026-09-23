@@ -97,6 +97,7 @@ export default function BottomNav() {
               alt="Lambang Kabupaten Pasangkayu"
               width={728}
               height={800}
+              sizes="40px"
               className="h-9 w-auto shrink-0"
             />
             <h3 className="font-semibold text-ink-950 font-editorial text-lg">Menu Lainnya</h3>
@@ -140,7 +141,7 @@ export default function BottomNav() {
 
       {/* Bottom Navigation */}
       <nav 
-        className={`fixed bottom-0 left-0 right-0 bg-paper-50/95 backdrop-blur-md border-t border-paper-200 z-[9999] rounded-t-xl md:hidden transition-transform duration-300 ease-in-out pb-safe ${
+        className={`fixed bottom-0 left-0 right-0 bg-paper-50/95 backdrop-blur-md border-t border-paper-200 z-[9999]  ${isMoreMenuOpen ? "rounded-none" : "rounded-t-4xl" }  md:hidden transition-transform duration-300 ease-in-out pb-safe ${
           isVisible ? 'translate-y-0' : 'translate-y-full'
         }`}
       >

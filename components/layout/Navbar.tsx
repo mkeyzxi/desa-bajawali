@@ -49,12 +49,13 @@ export default function Navbar() {
             alt="Lambang Kabupaten Pasangkayu"
             width={728}
             height={800}
+            sizes="48px"
             className="h-11 w-auto shrink-0"
           />
           <span className="flex flex-col">
             <span
               className={`font-editorial text-2xl lg:text-3xl font-semibold tracking-tight transition-colors ${
-                isTransparent ? 'text-white' : 'text-ink-950 group-hover:text-green-800'
+                isTransparent ? '!text-white' : 'text-ink-950 group-hover:text-green-800'
               }`}
             >
               Desa Bajawali
