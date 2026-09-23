@@ -1,5 +1,7 @@
 import { Clock, MapPin } from 'lucide-react';
-import Map from '@/components/map/MapWrapper';
+
+const MAP_EMBED_URL =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15953.872540417176!2d119.3557826934073!3d-1.4906304759257518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8cf9abf9303445%3A0xcc92ae06702c7a48!2sBajawali%2C%20Kec.%20Lariang%2C%20Kab.%20Pasangkayu%2C%20Sulawesi%20Barat!5e0!3m2!1sid!2sid!4v1790131615917!5m2!1sid!2sid";
 
 export const metadata = {
   title: "Kontak & Lokasi Desa Bajawali",
@@ -65,7 +67,17 @@ export default function KontakPage() {
           
           <div className="lg:col-span-7" id="peta">
             <div className="h-[500px] lg:h-full min-h-[500px] w-full bg-paper-200 border border-paper-200 rounded-md overflow-hidden relative">
-              <Map latitude={-1.4904673} longitude={119.3656846} zoom={13} />
+              <iframe
+                src={MAP_EMBED_URL}
+                width="600"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="Peta Lokasi Desa Bajawali"
+                className="absolute inset-0 h-full w-full"
+              />
             </div>
           </div>
 

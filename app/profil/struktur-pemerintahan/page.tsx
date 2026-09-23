@@ -69,7 +69,7 @@ export default function StrukturPemerintahanPage() {
                 {/* Foto */}
                 <div className="relative h-[360px] md:h-[400px] bg-paper-200">
                   <Image
-                    src="/gambar/kepala-desa-bajawali.webp"
+                    src="/gambar/struktur/kepala-desa-bajawali.webp"
                     alt="Kepala Desa Bajawali"
                     fill
                     priority

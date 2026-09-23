@@ -53,7 +53,7 @@ export default function GaleriPage() {
               </div>
               
               {/* Overlay Caption on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-green-200/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-white/80 mb-1">
                   {photo.category}
                 </span>

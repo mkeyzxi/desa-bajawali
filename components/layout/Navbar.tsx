@@ -2,6 +2,7 @@
 
 import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {usePathname} from 'next/navigation'
 
 export default function Navbar() {
@@ -42,20 +43,29 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-5 lg:px-8 py-4 md:py-5 flex items-center justify-between">
         {/* Brand */}
-        <Link href="/" className="group flex flex-col">
-          <span
-            className={`font-editorial text-2xl lg:text-3xl font-semibold tracking-tight transition-colors ${
-              isTransparent ? 'text-white' : 'text-ink-950 group-hover:text-green-800'
-            }`}
-          >
-            Desa Bajawali
-          </span>
-          <span
-            className={`text-xs font-semibold uppercase tracking-widest transition-colors ${
-              isTransparent ? 'text-white/80' : 'text-ink-500'
-            }`}
-          >
-            Kab. Pasangkayu
+        <Link href="/" className="group flex items-center gap-3">
+          <Image
+            src="/gambar/logo_pasangkayu.png"
+            alt="Lambang Kabupaten Pasangkayu"
+            width={728}
+            height={800}
+            className="h-11 w-auto shrink-0"
+          />
+          <span className="flex flex-col">
+            <span
+              className={`font-editorial text-2xl lg:text-3xl font-semibold tracking-tight transition-colors ${
+                isTransparent ? 'text-white' : 'text-ink-950 group-hover:text-green-800'
+              }`}
+            >
+              Desa Bajawali
+            </span>
+            <span
+              className={`text-xs font-semibold uppercase tracking-widest transition-colors ${
+                isTransparent ? 'text-white/80' : 'text-ink-500'
+              }`}
+            >
+              Kab. Pasangkayu
+            </span>
           </span>
         </Link>
 

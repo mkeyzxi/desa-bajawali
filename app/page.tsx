@@ -169,7 +169,7 @@ export default function Home() {
                 Pemerintahan
               </h3>
               <div className="font-editorial text-3xl text-ink-950 mb-2">
-                Ketut Langga <span className="text-sm font-sans text-ink-400">Kepala Desa</span>
+                Ketut Langga, S.Ag <span className="text-sm font-sans text-ink-400">Kepala Desa</span>
               </div>
               <p className="text-ink-600 mb-6">
                 Struktur organisasi pemerintahan desa, tokoh masyarakat, dan sistem pelayanan

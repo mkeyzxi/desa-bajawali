@@ -169,7 +169,7 @@ const slides = [
   {
     id: 1,
     image:
-      'https://images.pexels.com/photos/18934158/pexels-photo-18934158.jpeg?auto=compress&cs=tinysrgb&w=2000',
+      '/gambar/background/background_1.webp',
     title: 'Selamat Datang di Website Desa Bajawali',
     subtitle: 'DESA BAJAWALI · KECAMATAN LARIANG',
     description:
@@ -180,7 +180,7 @@ const slides = [
   {
     id: 2,
     image:
-      'https://images.pexels.com/photos/1576398/pexels-photo-1576398.jpeg?auto=compress&cs=tinysrgb&w=2000',
+      '/gambar/background/background_2baru.webp',
     title: 'Potensi Pertanian & Alam yang Melimpah',
     subtitle: 'KEKAYAAN ALAM DESA',
     description:
@@ -191,7 +191,7 @@ const slides = [
   {
     id: 3,
     image:
-      'https://images.pexels.com/photos/6252573/pexels-photo-6252573.jpeg?auto=compress&cs=tinysrgb&w=2000',
+      '/gambar/background/background_3.webp',
     title: 'Gotong Royong Membangun Desa',
     subtitle: 'KEGIATAN MASYARAKAT',
     description:
