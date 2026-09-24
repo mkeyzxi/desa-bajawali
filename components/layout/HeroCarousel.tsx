@@ -163,7 +163,7 @@
 import React, {useState, useEffect} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import {ArrowRight} from 'lucide-react'
+import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
 const slides = [
   {
@@ -284,7 +284,8 @@ export default function HeroCarousel() {
                       href={slide.primaryAction.href}
                       className="inline-flex items-center justify-center bg-emerald-600 text-white hover:bg-emerald-500 px-6 py-3.5 rounded-md font-medium transition-colors shadow-lg shadow-emerald-950/50"
                     >
-                      {slide.primaryAction.label} <ArrowRight className="ml-2 w-4 h-4" />
+                      {slide.primaryAction.label}{' '}
+                      <NavigationChevron direction="next" size={16} className="ml-2 shrink-0" />
                     </Link>
                     <Link
                       href={slide.secondaryAction.href}

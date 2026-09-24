@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {desaInfo, beritaDummy} from '@/data/dummy'
 import HeroCarousel from '@/components/layout/HeroCarousel'
+import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
 export default function Home() {
   const featureNews = beritaDummy[0]
@@ -119,7 +120,7 @@ export default function Home() {
                 Bajawali hingga saat ini.
               </p>
               <div className="text-sm font-semibold text-green-700 flex items-center gap-1 group-hover:gap-2 transition-all">
-                Baca selengkapnya &rarr;
+                Baca selengkapnya <NavigationChevron direction="next" />
               </div>
             </Link>
 
@@ -135,7 +136,7 @@ export default function Home() {
                 Kondisi topografi, luasan wilayah, dan batas administrasi.
               </p>
               <div className="text-sm font-semibold text-green-700 flex items-center gap-1 group-hover:gap-2 transition-all">
-                Lihat peta & data &rarr;
+                Lihat peta & data <NavigationChevron direction="next" />
               </div>
             </Link>
           </div>
@@ -156,7 +157,7 @@ export default function Home() {
                 Data kependudukan berdasarkan jenis kelamin dan usia.
               </p>
               <div className="text-sm font-semibold text-green-700 flex items-center gap-1 group-hover:gap-2 transition-all">
-                Lihat data &rarr;
+                Lihat data <NavigationChevron direction="next" />
               </div>
             </Link>
 
@@ -176,7 +177,7 @@ export default function Home() {
                 administrasi publik.
               </p>
               <div className="text-sm font-semibold text-green-700 flex items-center gap-1 group-hover:gap-2 transition-all">
-                Lihat struktur &rarr;
+                Lihat struktur <NavigationChevron direction="next" />
               </div>
             </Link>
           </div>
@@ -227,7 +228,7 @@ export default function Home() {
                   <span className="border-b border-white group-hover:border-transparent transition-colors">
                     Lihat potensi
                   </span>{' '}
-                  <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+                  <span className="transition-transform group-hover:translate-x-1"><NavigationChevron direction="next" /></span>
                 </div>
               </div>
             </Link>
@@ -253,7 +254,7 @@ export default function Home() {
                   <span className="border-b border-white group-hover:border-transparent transition-colors">
                     Lihat potensi
                   </span>{' '}
-                  <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+                  <span className="transition-transform group-hover:translate-x-1"><NavigationChevron direction="next" /></span>
                 </div>
               </div>
             </Link>
@@ -271,7 +272,7 @@ export default function Home() {
                     03
                   </span>
                   <h3 className="font-editorial text-lg text-ink-950 mb-1">Pariwisata</h3>
-                  <div className="text-xs font-semibold text-green-700">&rarr;</div>
+                  <div className="text-xs font-semibold text-green-700"><NavigationChevron direction="next" /></div>
                 </div>
               </Link>
 
@@ -286,7 +287,7 @@ export default function Home() {
                     04
                   </span>
                   <h3 className="font-editorial text-lg text-ink-950 mb-1">SDA</h3>
-                  <div className="text-xs font-semibold text-green-700">&rarr;</div>
+                  <div className="text-xs font-semibold text-green-700"><NavigationChevron direction="next" /></div>
                 </div>
               </Link>
             </div>
@@ -310,7 +311,7 @@ export default function Home() {
               href="/berita"
               className="hidden md:flex text-sm font-semibold text-green-700 items-center gap-1 hover:text-green-800 transition-colors"
             >
-              Lihat semua berita &rarr;
+              Lihat semua berita <NavigationChevron direction="next" />
             </Link>
           </div>
 

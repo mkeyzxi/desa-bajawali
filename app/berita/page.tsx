@@ -3,6 +3,7 @@ import Link from "next/link";
 import { beritaDummy } from "@/data/dummy";
 import { getPublishedNews } from "@/lib/queries/news";
 import { isSupabaseSource } from "@/lib/data-source";
+import { NavigationChevron } from "@/components/ui/NavigationChevron";
 
 export const metadata = {
   title: "Berita & Kegiatan Desa Bajawali",
@@ -81,7 +82,7 @@ export default async function BeritaPage() {
                       {featureNews.excerpt}
                     </p>
                     <div className="text-sm font-semibold text-green-700 flex items-center gap-2">
-                      Baca selengkapnya &rarr;
+                      Baca selengkapnya <NavigationChevron direction="next" />
                     </div>
                   </div>
                 </div>

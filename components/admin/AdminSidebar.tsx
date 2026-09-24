@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { NavigationChevron } from '@/components/ui/NavigationChevron'
 import type { Profile, UserRole } from '@/types/database'
 import {
   LayoutDashboard,
@@ -13,7 +14,6 @@ import {
   Users,
   User,
   LogOut,
-  ChevronLeft,
   Menu,
   X,
 } from 'lucide-react'
@@ -179,7 +179,7 @@ export default function AdminSidebar({ profile }: SidebarProps) {
           href="/"
           className="flex items-center gap-2 px-3 py-2 rounded-md text-xs text-green-400/50 hover:text-green-300 transition-colors"
         >
-          <ChevronLeft size={14} />
+          <NavigationChevron direction="previous" className="shrink-0" />
           Kembali ke Website
         </Link>
       </div>

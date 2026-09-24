@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getNewsBySlug, getPublishedNews } from "@/lib/queries/news";
 import { isSupabaseSource } from "@/lib/data-source";
 import type { Metadata } from 'next'
+import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -108,7 +109,7 @@ export default async function BeritaDetailPage({ params }: { params: Promise<{ s
             <Link href="/berita" className="text-xs font-bold uppercase tracking-widest text-ink-400 hover:text-green-700 transition-colors">
               Berita
             </Link>
-            <span className="text-ink-400 text-xs">&rarr;</span>
+            <span className="text-ink-400 text-xs"><NavigationChevron direction="next" /></span>
             <span className="text-xs font-bold uppercase tracking-widest text-green-700">
               {newsData.category}
             </span>

@@ -1,4 +1,5 @@
 import { desaInfo, mataPencaharian } from "@/data/dummy";
+import { NavigationChevron } from "@/components/ui/NavigationChevron";
 
 export const metadata = {
   title: "Demografi Desa Bajawali",
@@ -109,8 +110,8 @@ export default function DemografiPage() {
           </div>
           
           <div className="mt-12 text-center">
-            <a href="/data-desa" className="inline-flex items-center justify-center bg-transparent border border-paper-200 text-ink-800 hover:border-green-700 hover:text-green-700 px-6 py-3 rounded-md font-medium transition-colors">
-              Lihat Analitik & Grafik Data Desa &rarr;
+            <a href="/data-desa" className="inline-flex items-center justify-center gap-2 bg-transparent border border-paper-200 text-ink-800 hover:border-green-700 hover:text-green-700 px-6 py-3 rounded-md font-medium transition-colors">
+              Lihat Analitik & Grafik Data Desa <NavigationChevron direction="next" />
             </a>
           </div>
         </div>
