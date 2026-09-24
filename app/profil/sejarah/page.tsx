@@ -9,7 +9,7 @@ export default function SejarahPage() {
     <div className="py-12 md:py-24">
       <div className="container mx-auto px-5 lg:px-8">
         
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="mb-6">
             <span className="text-xs font-bold uppercase tracking-widest text-ink-400">Profil Desa</span>
           </div>

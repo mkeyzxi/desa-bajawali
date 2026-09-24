@@ -42,7 +42,7 @@ export default function PotensiPertanianPage() {
         </div> */}
 
         {/* Article Body */}
-        <div className="max-w-3xl mx-auto prose prose-xl prose-p:text-ink-800 prose-headings:font-editorial prose-headings:text-ink-950 max-w-none">
+        <div className="max-w-4xl mx-auto prose prose-xl prose-p:text-ink-800 prose-headings:font-editorial prose-headings:text-ink-950 max-w-none">
           <h2>Komoditas Andalan</h2>
           <p>
             Hasil pertanian kelapa sawit menjadi komoditas andalan masyarakat Desa Bajawali. Meningkatnya daya beli masyarakat menandakan sektor pertanian dan perkebunan terus tumbuh sebagai penopang ekonomi warga.

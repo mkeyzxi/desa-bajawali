@@ -103,7 +103,7 @@ export default async function BeritaDetailPage({ params }: { params: Promise<{ s
       <div className="container mx-auto px-5 lg:px-8">
         
         {/* Breadcrumb & Category */}
-        <div className="max-w-3xl mx-auto mb-8">
+        <div className="max-w-4xl mx-auto mb-8">
           <div className="flex items-center gap-2 mb-6">
             <Link href="/berita" className="text-xs font-bold uppercase tracking-widest text-ink-400 hover:text-green-700 transition-colors">
               Berita
@@ -136,7 +136,7 @@ export default async function BeritaDetailPage({ params }: { params: Promise<{ s
         </div>
 
         {/* Content */}
-        <div className="max-w-3xl mx-auto prose prose-xl prose-p:text-ink-800 prose-headings:font-editorial prose-headings:text-ink-950 prose-a:text-green-700 prose-img:rounded-lg max-w-none">
+        <div className="max-w-4xl mx-auto prose prose-xl prose-p:text-ink-800 prose-headings:font-editorial prose-headings:text-ink-950 prose-a:text-green-700 prose-img:rounded-lg max-w-none">
           <p className="text-xl font-medium text-ink-950 leading-relaxed mb-8">
             {newsData.excerpt}
           </p>
