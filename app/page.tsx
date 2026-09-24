@@ -4,6 +4,55 @@ import {desaInfo, beritaDummy} from '@/data/dummy'
 import HeroCarousel from '@/components/layout/HeroCarousel'
 import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
+type PerangkatDesa = {
+  jabatan: string
+  nama: string
+  foto?: string
+}
+
+const kepalaDesa = {
+  jabatan: 'Kepala Desa',
+  nama: 'Ketut Langga, S.Ag',
+  foto: '/gambar/struktur/kepala-desa-bajawali.webp',
+}
+
+const perangkatDesa: PerangkatDesa[] = [
+  {jabatan: 'Sekretaris Desa', nama: 'Kadek Wijaya'},
+  {
+    jabatan: 'Kaur Umum dan Perencanaan',
+    nama: 'I Gede Andi Suardika',
+    foto: '/gambar/struktur/I GEDE ANDI SUARDIKA.webp',
+  },
+  {jabatan: 'Kaur Keuangan', nama: 'Andreas Stevanus H'},
+  {
+    jabatan: 'Kasi Pemerintah',
+    nama: 'I Gede Agus Puja',
+    foto: '/gambar/struktur/igede Agus puja.webp',
+  },
+  {
+    jabatan: 'Kasi Kesra & Pelayanan',
+    nama: 'Meilisa',
+    foto: '/gambar/struktur/Meilisa.webp',
+  },
+  // {
+  //   jabatan: 'Staf Kasi Kesra',
+  //   nama: 'Ni Made Pipi Saphira',
+  //   foto: '/gambar/struktur/NI MADE PIPI SAPHIRA.webp',
+  // },
+]
+
+const profilDesa = [kepalaDesa, ...perangkatDesa]
+
+const getInitials = (nama: string) =>
+  nama
+    .replace(/,.*$/, '')
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join('')
+    .toUpperCase()
+
 export default function Home() {
   const featureNews = beritaDummy[0]
   const otherNews = beritaDummy.slice(1, 4)
@@ -12,6 +61,52 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Carousel */}
       <HeroCarousel />
+
+      {/* Sambutan Kepala Desa */}
+      <section className="py-12 md:py-16 border-b border-paper-200">
+        <div className="container mx-auto max-w-5xl px-5 lg:px-8">
+          <div className="grid md:grid-cols-[220px_1fr] overflow-hidden rounded-md border border-paper-200 bg-paper-50">
+            <div className="relative h-48 sm:h-56 md:h-auto md:min-h-[260px]">
+              <Image
+                src={kepalaDesa.foto}
+                alt={`Foto ${kepalaDesa.nama}, Kepala Desa Bajawali`}
+                fill
+                sizes="(max-width: 768px) 100vw, 220px"
+                className="object-cover object-top"
+              />
+              <div className="absolute top-4 left-4 bg-paper-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-ink-800 rounded-sm">
+                Sambutan
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center p-5 sm:p-7 md:p-8">
+              <div className="mb-3 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-green-700">
+                <span className="h-px w-8 bg-green-700" />
+                Sambutan Kepala Desa
+              </div>
+              <h2 className="font-editorial text-2xl md:text-3xl font-semibold text-ink-950 leading-tight mb-3">
+                Selamat datang di Desa Bajawali.
+              </h2>
+              <p className="text-base leading-relaxed text-ink-800 max-w-2xl">
+                Semoga informasi dalam website ini dapat membantu masyarakat mengenal Desa Bajawali,
+                memperoleh informasi tentang layanan, dan mengikuti pembangunan yang berjalan bersama.
+              </p>
+              <div className="mt-5 pt-4 border-t border-paper-200 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+                <div>
+                  <div className="font-editorial text-lg text-ink-950">{kepalaDesa.nama}</div>
+                  <div className="text-xs text-ink-600 mt-1">{kepalaDesa.jabatan}</div>
+                </div>
+                <Link
+                  href="/profil/struktur-pemerintahan"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:text-green-800 transition-colors"
+                >
+                  Lihat profil <NavigationChevron direction="next" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Sekilas Desa */}
       <section className="py-16 md:py-24 border-b border-paper-200">
@@ -184,11 +279,151 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Struktur Pemerintahan dan BPD */}
+      <section className="py-16 md:py-24 border-b border-paper-200 bg-paper-50">
+        <div className="container mx-auto px-5 lg:px-8">
+          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
+            03 / STRUKTUR PEMERINTAHAN
+          </div>
+          <div className="max-w-2xl mb-10 md:mb-12">
+            <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 mb-4 leading-tight">
+              Struktur pemerintahan dan BPD.
+            </h2>
+            <p className="text-ink-800">
+              Susunan perangkat Pemerintah Desa Bajawali dan Badan Permusyawaratan Desa (BPD)
+              yang menjadi mitra dalam tata kelola dan pelayanan Desa Bajawali.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-6 md:gap-8">
+            <figure className="bg-white border border-paper-200 rounded-md overflow-hidden">
+              <div className="p-3 md:p-5 border-b border-paper-200">
+                <Image
+                  src="/gambar/struktur/Struktur_Pemerintah_Desa_Bajawali (1).webp"
+                  alt="Bagan struktur organisasi Pemerintah Desa Bajawali"
+                  width={920}
+                  height={657}
+                  className="h-auto w-full"
+                />
+              </div>
+              <figcaption className="p-4 md:p-5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
+                  01 / Pemerintah Desa
+                </div>
+                <h3 className="font-editorial text-xl md:text-2xl text-ink-950">
+                  Struktur Pemerintah Desa
+                </h3>
+              </figcaption>
+            </figure>
+
+            <figure className="bg-white border border-paper-200 rounded-md overflow-hidden">
+              <div className="p-3 md:p-5 border-b border-paper-200">
+                <Image
+                  src="/gambar/struktur/Struktur_BPD_Bajawali (1) (9).webp"
+                  alt="Bagan struktur organisasi Badan Permusyawaratan Desa Bajawali"
+                  width={572}
+                  height={441}
+                  className="h-auto w-full"
+                />
+              </div>
+              <figcaption className="p-4 md:p-5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
+                  02 / Badan Permusyawaratan Desa
+                </div>
+                <h3 className="font-editorial text-xl md:text-2xl text-ink-950">
+                  Struktur BPD Bajawali
+                </h3>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div className="mt-8">
+            <Link
+              href="/profil/struktur-pemerintahan"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:text-green-800 transition-colors"
+            >
+              Lihat struktur lengkap <NavigationChevron direction="next" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Kepala Desa dan Perangkat Desa */}
+      <section className="py-16 md:py-24 border-b border-paper-200">
+        <div className="container mx-auto px-5 lg:px-8">
+          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
+            04 / PERANGKAT DESA
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12">
+            <div className="max-w-2xl">
+              <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 mb-4 leading-tight">
+                Kepala Desa dan Perangkat Desa.
+              </h2>
+              <p className="text-ink-800">
+                Kenali kepala desa dan perangkat atau pelaksana yang menjalankan pemerintahan serta
+                pelayanan sehari-hari di Desa Bajawali.
+              </p>
+            </div>
+            <Link
+              href="/profil/struktur-pemerintahan"
+              className="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:text-green-800 transition-colors"
+            >
+              Lihat struktur lengkap <NavigationChevron direction="next" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-start gap-4 md:gap-6">
+            {profilDesa.map((perangkat) => (
+              <Link
+                key={`${perangkat.jabatan}-${perangkat.nama}`}
+                href="/profil/struktur-pemerintahan"
+                className="group flex min-h-[168px] overflow-hidden bg-paper-50 border border-paper-200 hover:border-green-300 transition-colors"
+              >
+                <div className="relative w-28 h-full min-h-[168px] shrink-0 bg-paper-200 sm:w-32">
+                  {perangkat.foto ? (
+                    <Image
+                      src={perangkat.foto}
+                      alt={`Foto ${perangkat.nama}`}
+                      fill
+                      sizes="(max-width: 640px) 112px, 128px"
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.025]"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 flex items-center justify-center font-editorial text-2xl text-ink-600"
+                    >
+                      {getInitials(perangkat.nama)}
+                    </span>
+                  )}
+                </div>
+                <div className="flex min-w-0 flex-1 flex-col p-4 md:p-5">
+                  <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
+                    {perangkat.jabatan}
+                  </div>
+                  <h3 className="font-editorial text-lg md:text-xl font-semibold text-ink-950 leading-snug">
+                    {perangkat.nama}
+                  </h3>
+                  <div className="mt-auto pt-4 flex items-center gap-1 text-sm font-semibold text-green-700">
+                    <span className="border-b border-green-700 group-hover:border-transparent transition-colors">
+                      Lihat profil
+                    </span>{' '}
+                    <span className="transition-transform group-hover:translate-x-1">
+                      <NavigationChevron direction="next" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Potensi Desa */}
       <section className="py-16 md:py-24 border-b border-paper-200 bg-paper-50">
         <div className="container mx-auto px-5 lg:px-8">
           <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-            03 / POTENSI DESA
+            05 / POTENSI DESA
           </div>
           <div className="max-w-2xl mb-12">
             <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 mb-4 leading-tight">
@@ -301,7 +536,7 @@ export default function Home() {
           <div className="flex justify-between items-end mb-8 md:mb-12">
             <div>
               <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-                04 / KABAR DESA
+                06 / KABAR DESA
               </div>
               <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 leading-tight">
                 Berita & Kegiatan
