@@ -4,19 +4,47 @@ export const metadata = {title: 'Struktur Pemerintahan Desa Bajawali'}
 
 const perangkatDesa = [
   {jabatan: 'Sekretaris Desa', nama: 'Kadek Wijaya'},
-  {jabatan: 'Kaur Umum', nama: 'I Gede Andi Suardika'},
+  {
+    jabatan: 'Kaur Umum dan Perencanaan',
+    nama: 'I Gede Andi Suardika',
+    foto: '/gambar/struktur/I GEDE ANDI SUARDIKA.webp',
+  },
   {jabatan: 'Kaur Keuangan', nama: 'Andreas Stevanus H'},
-  {jabatan: 'Kasi Pemerintahan', nama: 'I Gede Agus Puja S'},
-  {jabatan: 'Kasi Kesejahteraan', nama: 'Meilisa, S.Sos'},
-  {jabatan: 'Staf Desa', nama: 'Ni Komang Ayu Tantri'},
-  {jabatan: 'Staf Desa', nama: 'Pipi Shapira'},
+  {
+    jabatan: 'Kasi Pemerintah',
+    nama: 'I Gede Agus Puja',
+    foto: '/gambar/struktur/igede Agus puja.webp',
+  },
+  {
+    jabatan: 'Kasi Kesra & Pelayanan',
+    nama: 'Meilisa',
+    foto: '/gambar/struktur/Meilisa.webp',
+  },
+  {
+    jabatan: 'Staf Kaur Keuangan',
+    nama: 'Ni Komang Ayu Tantri',
+    foto: '/gambar/struktur/Ni km ayu Tantri.webp',
+  },
+  {
+    jabatan: 'Staf Kasi Kesra',
+    nama: 'Ni Made Pipi Saphira',
+    foto: '/gambar/struktur/NI MADE PIPI SAPHIRA.webp',
+  },
 ]
 
 const kepalaDusun = [
-  {dusun: 'Dusun Kerta', nama: 'I Ketut Agus Darmadi'},
-  {dusun: 'Dusun Makmur', nama: 'I Komang Dusasana'},
-  {dusun: 'Dusun Lestari', nama: 'I Wayan Juli Antara'},
-  {dusun: 'Dusun Mandiri', nama: 'Kadek Rikin'},
+  {
+    dusun: 'Kadus Kerta',
+    nama: 'I Ketut Agus Darmadi',
+    foto: '/gambar/struktur/I ketut agus darmadi.webp',
+  },
+  {
+    dusun: 'Kadus Makmur',
+    nama: 'Ni Komang Suartini',
+    foto: '/gambar/struktur/Ni Komang Suartini.webp',
+  },
+  {dusun: 'Kadus Lestari', nama: 'I Wayan Juli Antara'},
+  {dusun: 'Kadus Mandiri', nama: 'Kadek Rikin'},
 ]
 
 const bpd = [
@@ -115,10 +143,20 @@ export default function StrukturPemerintahanPage() {
                   key={`${perangkat.jabatan}-${perangkat.nama}`}
                   className="bg-paper-50 border border-paper-200 rounded-md p-5 md:p-6 text-center"
                 >
-                  <div className="w-24 h-24 md:w-28 md:h-28 mx-auto mb-5 rounded-full border-4 border-white shadow-sm bg-paper-200 flex items-center justify-center">
-                    <span className="font-editorial text-2xl md:text-3xl text-ink-500">
-                      {getInitials(perangkat.nama)}
-                    </span>
+                  <div className="relative w-24 h-24 md:w-28 md:h-28 mx-auto mb-5 overflow-hidden rounded-full border-4 border-white shadow-sm bg-paper-200 flex items-center justify-center">
+                    {perangkat.foto ? (
+                      <Image
+                        src={perangkat.foto}
+                        alt={`Foto ${perangkat.nama}`}
+                        fill
+                        sizes="(max-width: 640px) 96px, 112px"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <span className="font-editorial text-2xl md:text-3xl text-ink-500">
+                        {getInitials(perangkat.nama)}
+                      </span>
+                    )}
                   </div>
                   <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
                     {perangkat.jabatan}
@@ -150,6 +188,21 @@ export default function StrukturPemerintahanPage() {
                   key={dusun.dusun}
                   className="bg-paper-50 border border-paper-200 rounded-md p-5 md:p-6 text-center"
                 >
+                  <div className="relative w-20 h-20 mx-auto mb-4 overflow-hidden rounded-full border-4 border-white shadow-sm bg-paper-200 flex items-center justify-center">
+                    {dusun.foto ? (
+                      <Image
+                        src={dusun.foto}
+                        alt={`Foto ${dusun.nama}`}
+                        fill
+                        sizes="80px"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <span className="font-editorial text-xl text-ink-500">
+                        {getInitials(dusun.nama)}
+                      </span>
+                    )}
+                  </div>
                   <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
                     {dusun.dusun}
                   </div>

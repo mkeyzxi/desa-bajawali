@@ -141,6 +141,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
 export default function Footer() {
   return (
@@ -271,9 +272,9 @@ export default function Footer() {
               <li className="mt-2">
                 <Link
                   href="/kontak"
-                  className="text-green-700 hover:text-green-800 font-medium transition-colors"
+                  className="inline-flex items-center gap-1.5 text-green-700 hover:text-green-800 font-medium transition-colors"
                 >
-                  Hubungi Kami &rarr;
+                  Hubungi Kami <NavigationChevron direction="next" />
                 </Link>
               </li>
             </ul>

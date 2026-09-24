@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Newspaper, Image as ImageIcon, Users, Database, Plus, ArrowRight } from 'lucide-react'
+import { Newspaper, Image as ImageIcon, Users, Database, Plus } from 'lucide-react'
+import { NavigationChevron } from '@/components/ui/NavigationChevron'
 import StatCard from '@/components/admin/StatCard'
 import { getNewsCount } from '@/lib/queries/news'
 import { getGalleryCount } from '@/lib/queries/gallery'
@@ -186,13 +187,13 @@ export default async function AdminDashboardPage() {
               href="/admin/berita"
               className="text-xs font-medium text-green-700 hover:text-green-800 flex items-center gap-1"
             >
-              Lihat semua berita <ArrowRight size={12} />
+              Lihat semua berita <NavigationChevron direction="next" className="shrink-0" />
             </Link>
             <Link
               href="/admin/galeri"
               className="text-xs font-medium text-green-700 hover:text-green-800 flex items-center gap-1"
             >
-              Lihat semua galeri <ArrowRight size={12} />
+              Lihat semua galeri <NavigationChevron direction="next" className="shrink-0" />
             </Link>
           </div>
         </div>
