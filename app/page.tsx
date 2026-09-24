@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { BarChart3, Clock, MapPin } from 'lucide-react'
 import {desaInfo, beritaDummy, galeriDummy} from '@/data/dummy'
 import HeroCarousel from '@/components/layout/HeroCarousel'
 import StructureImageLightbox from '@/components/gallery/StructureImageLightbox'
@@ -58,6 +57,26 @@ const strukturImages = [
   },
 ]
 
+type IconImageProps = {
+  src: string
+  className?: string
+}
+
+function IconImage({ src, className = 'h-6 w-6 object-contain' }: IconImageProps) {
+  return <Image src={src} alt="" width={40} height={40} className={className} />
+}
+
+function SectionLabel({ label, icon }: { label: string; icon: string }) {
+  return (
+    <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-ink-400">
+      <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-paper-100">
+        <IconImage src={icon} />
+      </span>
+      <span>{label}</span>
+    </div>
+  )
+}
+
 const getInitials = (nama: string) =>
   nama
     .replace(/,.*$/, '')
@@ -97,6 +116,9 @@ export default function Home() {
 
             <div className="flex flex-col justify-center p-5 sm:p-7 md:p-8">
               <div className="mb-3 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-green-700">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-green-50">
+                  <IconImage src="/gambar/icon/kantor_desa.webp" />
+                </span>
                 <span className="h-px w-8 bg-green-700" />
                 Sambutan Kepala Desa
               </div>
@@ -127,9 +149,7 @@ export default function Home() {
       {/* Sekilas Desa */}
       <section className="py-16 md:py-24 border-b border-paper-200">
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-            01 / Tentang Bajawali
-          </div>
+          <SectionLabel label="01 / TENTANG BAJAWALI" icon="/gambar/icon/batas_wilayah.webp" />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
             <div className="lg:col-span-7">
               <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 mb-6 leading-tight">
@@ -158,20 +178,29 @@ export default function Home() {
                 <div className="font-editorial text-4xl text-ink-950 mb-1">
                   {desaInfo.luasWilayah} Ha
                 </div>
-                <div className="text-sm font-semibold text-ink-600">Luas wilayah</div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-ink-600">
+                  <IconImage src="/gambar/icon/dusun_wilayah.webp" className="h-5 w-5" />
+                  Luas wilayah
+                </div>
                 <div className="text-xs text-ink-400 mt-1">Profil Desa {desaInfo.tahunData}</div>
               </div>
               <div className="border-t border-paper-200 pt-4">
                 <div className="font-editorial text-4xl text-ink-950 mb-1">
                   {desaInfo.kecamatan}
                 </div>
-                <div className="text-sm font-semibold text-ink-600">Kecamatan</div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-ink-600">
+                  <IconImage src="/gambar/icon/lokasi.webp" className="h-5 w-5" />
+                  Kecamatan
+                </div>
               </div>
               <div className="border-t border-paper-200 pt-4">
                 <div className="font-editorial text-4xl text-ink-950 mb-1">
                   {desaInfo.kabupaten}
                 </div>
-                <div className="text-sm font-semibold text-ink-600">Kabupaten</div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-ink-600">
+                  <IconImage src="/gambar/icon/kantor_desa.webp" className="h-5 w-5" />
+                  Kabupaten
+                </div>
               </div>
             </div>
           </div>
@@ -183,24 +212,36 @@ export default function Home() {
         <div className="container mx-auto px-5 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-paper-200">
             <div className="py-8 md:py-12 px-4 md:px-6 flex flex-col items-center text-center">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-paper-50">
+                <IconImage src="/gambar/icon/data_penduduk.webp" />
+              </div>
               <div className="text-sm font-semibold text-ink-600 mb-2">Penduduk</div>
               <div className="font-editorial text-4xl md:text-5xl font-semibold text-ink-950 mb-2">
                 {desaInfo.penduduk}
               </div>
             </div>
             <div className="py-8 md:py-12 px-4 md:px-6 flex flex-col items-center text-center">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-paper-50">
+                <IconImage src="/gambar/icon/keluarga.webp" />
+              </div>
               <div className="text-sm font-semibold text-ink-600 mb-2">Kepala Keluarga</div>
               <div className="font-editorial text-4xl md:text-5xl font-semibold text-ink-950 mb-2">
                 {desaInfo.kk}
               </div>
             </div>
             <div className="py-8 md:py-12 px-4 md:px-6 flex flex-col items-center text-center">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-paper-50">
+                <IconImage src="/gambar/icon/dusun_wilayah.webp" />
+              </div>
               <div className="text-sm font-semibold text-ink-600 mb-2">Dusun</div>
               <div className="font-editorial text-4xl md:text-5xl font-semibold text-ink-950 mb-2">
                 {desaInfo.dusun}
               </div>
             </div>
             <div className="py-8 md:py-12 px-4 md:px-6 flex flex-col items-center text-center border-l md:border-l-0 border-paper-200">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-paper-50">
+                <IconImage src="/gambar/icon/dokumen.webp" />
+              </div>
               <div className="text-sm font-semibold text-ink-600 mb-2">RT</div>
               <div className="font-editorial text-4xl md:text-5xl font-semibold text-ink-950 mb-2">
                 {desaInfo.rt}
@@ -213,9 +254,7 @@ export default function Home() {
       {/* Profil Singkat (Grid Modul Asimetris) */}
       <section className="py-16 md:py-24 border-b border-paper-200">
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-            02 / PROFIL SINGKAT
-          </div>
+          <SectionLabel label="02 / PROFIL SINGKAT" icon="/gambar/icon/dokumen.webp" />
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-8">
             {/* Sejarah */}
@@ -223,6 +262,9 @@ export default function Home() {
               href="/profil/sejarah"
               className="md:col-span-7 group block bg-paper-50 border border-paper-200 p-6 md:p-8 hover:border-green-300 transition-colors"
             >
+              <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-md bg-green-50">
+                <IconImage src="/gambar/icon/dokumen.webp" className="h-7 w-7" />
+              </div>
               <h3 className="font-editorial text-2xl text-ink-950 mb-3 group-hover:text-green-800 transition-colors">
                 Sejarah Desa
               </h3>
@@ -240,6 +282,9 @@ export default function Home() {
               href="/profil/geografis"
               className="md:col-span-5 group block bg-paper-50 border border-paper-200 p-6 md:p-8 hover:border-green-300 transition-colors"
             >
+              <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-md bg-green-50">
+                <IconImage src="/gambar/icon/batas_wilayah.webp" className="h-7 w-7" />
+              </div>
               <h3 className="font-editorial text-2xl text-ink-950 mb-3 group-hover:text-green-800 transition-colors">
                 Geografis
               </h3>
@@ -258,6 +303,9 @@ export default function Home() {
               href="/profil/demografi"
               className="md:col-span-5 group block bg-paper-50 border border-paper-200 p-6 md:p-8 hover:border-green-300 transition-colors"
             >
+              <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-md bg-green-50">
+                <IconImage src="/gambar/icon/data_penduduk.webp" className="h-7 w-7" />
+              </div>
               <h3 className="font-editorial text-2xl text-ink-950 mb-3 group-hover:text-green-800 transition-colors">
                 Demografi
               </h3>
@@ -277,6 +325,9 @@ export default function Home() {
               href="/profil/struktur-pemerintahan"
               className="md:col-span-7 group block bg-paper-50 border border-paper-200 p-6 md:p-8 hover:border-green-300 transition-colors"
             >
+              <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-md bg-green-50">
+                <IconImage src="/gambar/icon/kantor_desa.webp" className="h-7 w-7" />
+              </div>
               <h3 className="font-editorial text-2xl text-ink-950 mb-3 group-hover:text-green-800 transition-colors">
                 Pemerintahan
               </h3>
@@ -298,9 +349,7 @@ export default function Home() {
       {/* Struktur Pemerintahan dan BPD */}
       <section className="py-16 md:py-24 border-b border-paper-200 bg-paper-50">
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-            03 / STRUKTUR PEMERINTAHAN
-          </div>
+          <SectionLabel label="03 / STRUKTUR PEMERINTAHAN" icon="/gambar/icon/kantor_desa.webp" />
           <div className="max-w-2xl mb-10 md:mb-12">
             <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 mb-4 leading-tight">
               Struktur pemerintahan dan BPD.
@@ -370,9 +419,7 @@ export default function Home() {
       {/* Kepala Desa dan Perangkat Desa */}
       <section className="py-16 md:py-24 border-b border-paper-200">
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-            04 / PERANGKAT DESA
-          </div>
+          <SectionLabel label="04 / PERANGKAT DESA" icon="/gambar/icon/kantor_desa.webp" />
 
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12">
             <div className="max-w-2xl">
@@ -442,9 +489,7 @@ export default function Home() {
       {/* Potensi Desa */}
       <section className="py-16 md:py-24 border-b border-paper-200 bg-paper-50">
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-            05 / POTENSI DESA
-          </div>
+          <SectionLabel label="05 / POTENSI DESA" icon="/gambar/icon/potensi_desa.webp" />
           <div className="max-w-2xl mb-12">
             <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 mb-4 leading-tight">
               Yang tumbuh dari tanah dan kerja masyarakat.
@@ -555,9 +600,7 @@ export default function Home() {
         <div className="container mx-auto px-5 lg:px-8">
           <div className="flex justify-between items-end mb-8 md:mb-12">
             <div>
-              <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-                06 / KABAR DESA
-              </div>
+              <SectionLabel label="06 / KABAR DESA" icon="/gambar/icon/jadwal_kegiatan.webp" />
               <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 leading-tight">
                 Berita & Kegiatan
               </h2>
@@ -641,9 +684,7 @@ export default function Home() {
         <div className="container mx-auto px-5 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12">
             <div>
-              <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-                07 / GALERI DOKUMENTASI
-              </div>
+              <SectionLabel label="07 / GALERI DOKUMENTASI" icon="/gambar/icon/galeri_dokumentasi.webp" />
               <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 leading-tight">
                 Cerita dalam gambar.
               </h2>
@@ -719,9 +760,7 @@ export default function Home() {
       {/* Data dan Kontak */}
       <section className="py-16 md:py-24 border-t border-paper-200">
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
-            08 / INFORMASI DESA
-          </div>
+          <SectionLabel label="08 / INFORMASI DESA" icon="/gambar/icon/statistik.webp" />
           <div className="max-w-2xl mb-10 md:mb-12">
             <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 leading-tight">
               Informasi yang mudah dijangkau.
@@ -739,7 +778,7 @@ export default function Home() {
               <div>
                 <div className="flex items-start justify-between">
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-green-300">
-                    <BarChart3 size={22} aria-hidden="true" />
+                    <IconImage src="/gambar/icon/statistik.webp" className="h-7 w-7" />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-widest text-white/50">
                     01
@@ -798,7 +837,7 @@ export default function Home() {
               <div>
                 <div className="flex items-start justify-between">
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-green-50 text-green-700">
-                    <MapPin size={22} aria-hidden="true" />
+                    <IconImage src="/gambar/icon/lokasi.webp" className="h-7 w-7" />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-widest text-ink-400">
                     02
@@ -820,11 +859,17 @@ export default function Home() {
               <div>
                 <div className="space-y-3 border-t border-paper-200 pt-5">
                   <div className="flex items-start gap-3 text-sm text-ink-700">
-                    <MapPin className="text-green-700 shrink-0 mt-0.5" size={17} aria-hidden="true" />
+                    <IconImage
+                      src="/gambar/icon/lokasi.webp"
+                      className="mt-0.5 h-5 w-5 shrink-0"
+                    />
                     <span>Desa Bajawali, Kec. Lariang, Kab. Pasangkayu</span>
                   </div>
                   <div className="flex items-start gap-3 text-sm text-ink-700">
-                    <Clock className="text-green-700 shrink-0 mt-0.5" size={17} aria-hidden="true" />
+                    <IconImage
+                      src="/gambar/icon/jadwal_kegiatan.webp"
+                      className="mt-0.5 h-5 w-5 shrink-0"
+                    />
                     <span>Senin–Jumat · 08.00–15.00 WITA</span>
                   </div>
                 </div>
