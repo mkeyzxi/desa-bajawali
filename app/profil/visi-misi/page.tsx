@@ -54,7 +54,7 @@ export default function VisiMisiPage() {
           </div>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <h2 className="text-sm font-bold uppercase tracking-widest text-green-700 mb-3 text-center">Bidang Kerja Pemerintah Desa</h2>
           <p className="text-ink-600 text-center mb-8">
             Lima bidang kegiatan yang menjadi fokus penyelenggaraan pemerintahan Desa Bajawali.

@@ -12,7 +12,7 @@ export default function GeografisPage() {
     <div className="py-12 md:py-24">
       <div className="container mx-auto px-5 lg:px-8">
         
-        <div className="max-w-3xl mx-auto mb-16">
+        <div className="max-w-4xl mx-auto mb-16">
           <div className="mb-6">
             <span className="text-xs font-bold uppercase tracking-widest text-ink-400">Profil Desa</span>
           </div>
@@ -57,7 +57,7 @@ export default function GeografisPage() {
         </div>
 
         {/* Peta Mini */}
-        <div className="max-w-5xl mx-auto mt-16">
+        <div className="max-w-4xl mx-auto mt-16">
           <h3 className="font-editorial text-2xl text-ink-950 mb-6">Peta Lokasi</h3>
           <div className="h-[400px] w-full bg-paper-200 border border-paper-200 rounded-lg overflow-hidden relative">
             <iframe
