@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {desaInfo, beritaDummy} from '@/data/dummy'
+import {desaInfo, beritaDummy, galeriDummy} from '@/data/dummy'
 import HeroCarousel from '@/components/layout/HeroCarousel'
 import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
@@ -56,6 +56,7 @@ const getInitials = (nama: string) =>
 export default function Home() {
   const featureNews = beritaDummy[0]
   const otherNews = beritaDummy.slice(1, 4)
+  const latestGallery = galeriDummy.slice(0, 5)
 
   return (
     <div className="flex flex-col">
@@ -65,7 +66,7 @@ export default function Home() {
       {/* Sambutan Kepala Desa */}
       <section className="py-12 md:py-16 border-b border-paper-200">
         <div className="container mx-auto max-w-5xl px-5 lg:px-8">
-          <div className="grid md:grid-cols-[220px_1fr] overflow-hidden rounded-md border border-paper-200 bg-paper-50">
+          <div className="grid md:grid-cols-[220px_1fr] overflow-hidden rounded-4xl border border-paper-200 bg-paper-50">
             <div className="relative h-48 sm:h-56 md:h-auto md:min-h-[260px]">
               <Image
                 src={kepalaDesa.foto}
@@ -74,9 +75,9 @@ export default function Home() {
                 sizes="(max-width: 768px) 100vw, 220px"
                 className="object-cover object-top"
               />
-              <div className="absolute top-4 left-4 bg-paper-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-ink-800 rounded-sm">
+              {/* <div className="absolute top-4 left-4 bg-paper-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-ink-800 rounded-sm">
                 Sambutan
-              </div>
+              </div> */}
             </div>
 
             <div className="flex flex-col justify-center p-5 sm:p-7 md:p-8">
@@ -612,6 +613,86 @@ export default function Home() {
             >
               Lihat semua berita
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Galeri Dokumentasi */}
+      <section className="py-16 md:py-24 border-t border-paper-200 bg-paper-100">
+        <div className="container mx-auto px-5 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12">
+            <div>
+              <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
+                07 / GALERI DOKUMENTASI
+              </div>
+              <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 leading-tight">
+                Cerita dalam gambar.
+              </h2>
+              <p className="text-ink-800 mt-4 max-w-2xl">
+                Rekam jejak terbaru kegiatan, pembangunan, dan kehidupan masyarakat Desa Bajawali.
+              </p>
+            </div>
+            <Link
+              href="/galeri"
+              className="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:text-green-800 transition-colors"
+            >
+              Lihat semua galeri <NavigationChevron direction="next" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            {latestGallery.map((photo, index) => (
+              <Link
+                key={photo.id}
+                href="/galeri"
+                className={`group relative overflow-hidden border border-paper-200 bg-paper-50 hover:border-green-300 transition-colors ${
+                  index === 0 ? 'sm:col-span-2 sm:row-span-2' : ''
+                }`}
+              >
+                <div
+                  className={`relative ${
+                    index === 0
+                      ? 'aspect-[4/3] md:aspect-auto md:min-h-[420px]'
+                      : 'aspect-[4/3]'
+                  }`}
+                >
+                  <Image
+                    src={photo.url}
+                    alt={photo.caption}
+                    fill
+                    sizes={
+                      index === 0
+                        ? '(max-width: 639px) 100vw, (max-width: 1023px) 100vw, 50vw'
+                        : '(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw'
+                    }
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+                  />
+                  <div className="absolute inset-0 bg-black/30"></div>
+                  <div className="absolute top-3 left-3 right-3">
+                    <span className="inline-block max-w-full whitespace-normal break-words bg-paper-50/95 px-2.5 py-1 text-[10px] font-bold uppercase leading-tight tracking-widest text-ink-800 rounded-sm">
+                      {photo.category}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white md:p-5">
+                    {/* <h3
+                      className={`font-editorial font-semibold leading-snug line-clamp-2 ${
+                        index === 0 ? 'text-xl md:text-2xl' : 'text-base md:text-lg'
+                      }`}
+                    >
+                      {photo.caption}
+                    </h3> */}
+                    <div className="mt-3 flex items-center gap-1 text-xs font-semibold md:text-sm">
+                      <span className="border-b border-white/80 group-hover:border-transparent transition-colors">
+                        Lihat galeri
+                      </span>
+                      <span className="transition-transform group-hover:translate-x-1">
+                        <NavigationChevron direction="next" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
