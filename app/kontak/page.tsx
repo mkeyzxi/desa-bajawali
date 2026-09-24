@@ -1,4 +1,4 @@
-import { Clock, MapPin } from 'lucide-react';
+import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 
 const MAP_EMBED_URL =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15953.872540417176!2d119.3557826934073!3d-1.4906304759257518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8cf9abf9303445%3A0xcc92ae06702c7a48!2sBajawali%2C%20Kec.%20Lariang%2C%20Kab.%20Pasangkayu%2C%20Sulawesi%20Barat!5e0!3m2!1sid!2sid!4v1790131615917!5m2!1sid!2sid";
@@ -41,6 +41,34 @@ export default function KontakPage() {
                       Kabupaten Pasangkayu<br />
                       Provinsi Sulawesi Barat
                     </span>
+                  </div>
+                </li>
+
+                <li className="flex gap-4 items-start">
+                  <Mail className="text-green-700 mt-1 shrink-0" size={20} />
+                  <div>
+                    <strong className="block text-ink-950 font-medium mb-1">Email</strong>
+                    <a
+                      href="mailto:desabajawali2@gmail.com"
+                      className="text-sm text-green-700 hover:text-green-800 transition-colors"
+                    >
+                      desabajawali2@gmail.com
+                    </a>
+                  </div>
+                </li>
+
+                <li className="flex gap-4 items-start">
+                  <Phone className="text-green-700 mt-1 shrink-0" size={20} />
+                  <div>
+                    <strong className="block text-ink-950 font-medium mb-1">Telepon/WhatsApp</strong>
+                    <a
+                      href="https://wa.me/+6285756063460"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-green-700 hover:text-green-800 transition-colors"
+                    >
+                      +62 857-5606-3460
+                    </a>
                   </div>
                 </li>
                 
