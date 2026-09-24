@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {desaInfo, beritaDummy, galeriDummy} from '@/data/dummy'
 import HeroCarousel from '@/components/layout/HeroCarousel'
+import HomeScrollEffects from '@/components/animations/HomeScrollEffects'
 import StructureImageLightbox from '@/components/gallery/StructureImageLightbox'
 import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
@@ -952,6 +953,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <HomeScrollEffects />
     </div>
   )
 }
