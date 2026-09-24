@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { BarChart3, Clock, MapPin } from 'lucide-react'
 import {desaInfo, beritaDummy, galeriDummy} from '@/data/dummy'
 import HeroCarousel from '@/components/layout/HeroCarousel'
+import StructureImageLightbox from '@/components/gallery/StructureImageLightbox'
 import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
 type PerangkatDesa = {
@@ -42,6 +44,19 @@ const perangkatDesa: PerangkatDesa[] = [
 ]
 
 const profilDesa = [kepalaDesa, ...perangkatDesa]
+
+const strukturImages = [
+  {
+    src: '/gambar/struktur/Struktur_Pemerintah_Desa_Bajawali (1).webp',
+    alt: 'Bagan struktur organisasi Pemerintah Desa Bajawali',
+    title: 'Struktur Pemerintah Desa',
+  },
+  {
+    src: '/gambar/struktur/Struktur_BPD_Bajawali (1) (9).webp',
+    alt: 'Bagan struktur organisasi Badan Permusyawaratan Desa Bajawali',
+    title: 'Struktur BPD Bajawali',
+  },
+]
 
 const getInitials = (nama: string) =>
   nama
@@ -296,45 +311,49 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-6 md:gap-8">
-            <figure className="bg-white border border-paper-200 rounded-md overflow-hidden">
-              <div className="p-3 md:p-5 border-b border-paper-200">
-                <Image
-                  src="/gambar/struktur/Struktur_Pemerintah_Desa_Bajawali (1).webp"
-                  alt="Bagan struktur organisasi Pemerintah Desa Bajawali"
-                  width={920}
-                  height={657}
-                  className="h-auto w-full"
-                />
-              </div>
-              <figcaption className="p-4 md:p-5">
-                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
-                  01 / Pemerintah Desa
+            <StructureImageLightbox images={strukturImages} initialIndex={0}>
+              <figure className="bg-white border border-paper-200 rounded-md overflow-hidden">
+                <div className="p-3 md:p-5 border-b border-paper-200">
+                  <Image
+                    src={strukturImages[0].src}
+                    alt={strukturImages[0].alt}
+                    width={920}
+                    height={657}
+                    className="h-auto w-full"
+                  />
                 </div>
-                <h3 className="font-editorial text-xl md:text-2xl text-ink-950">
-                  Struktur Pemerintah Desa
-                </h3>
-              </figcaption>
-            </figure>
+                <figcaption className="p-4 md:p-5">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
+                    01 / Pemerintah Desa
+                  </div>
+                  <h3 className="font-editorial text-xl md:text-2xl text-ink-950">
+                    {strukturImages[0].title}
+                  </h3>
+                </figcaption>
+              </figure>
+            </StructureImageLightbox>
 
-            <figure className="bg-white border border-paper-200 rounded-md overflow-hidden">
-              <div className="p-3 md:p-5 border-b border-paper-200">
-                <Image
-                  src="/gambar/struktur/Struktur_BPD_Bajawali (1) (9).webp"
-                  alt="Bagan struktur organisasi Badan Permusyawaratan Desa Bajawali"
-                  width={572}
-                  height={441}
-                  className="h-auto w-full"
-                />
-              </div>
-              <figcaption className="p-4 md:p-5">
-                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
-                  02 / Badan Permusyawaratan Desa
+            <StructureImageLightbox images={strukturImages} initialIndex={1}>
+              <figure className="bg-white border border-paper-200 rounded-md overflow-hidden">
+                <div className="p-3 md:p-5 border-b border-paper-200">
+                  <Image
+                    src={strukturImages[1].src}
+                    alt={strukturImages[1].alt}
+                    width={572}
+                    height={441}
+                    className="h-auto w-full"
+                  />
                 </div>
-                <h3 className="font-editorial text-xl md:text-2xl text-ink-950">
-                  Struktur BPD Bajawali
-                </h3>
-              </figcaption>
-            </figure>
+                <figcaption className="p-4 md:p-5">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
+                    02 / Badan Permusyawaratan Desa
+                  </div>
+                  <h3 className="font-editorial text-xl md:text-2xl text-ink-950">
+                    {strukturImages[1].title}
+                  </h3>
+                </figcaption>
+              </figure>
+            </StructureImageLightbox>
           </div>
 
           <div className="mt-8">
@@ -693,6 +712,132 @@ export default function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Data dan Kontak */}
+      <section className="py-16 md:py-24 border-t border-paper-200">
+        <div className="container mx-auto px-5 lg:px-8">
+          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-ink-400">
+            08 / INFORMASI DESA
+          </div>
+          <div className="max-w-2xl mb-10 md:mb-12">
+            <h2 className="font-editorial text-3xl md:text-4xl font-semibold text-ink-950 leading-tight">
+              Informasi yang mudah dijangkau.
+            </h2>
+            <p className="text-ink-800 mt-4">
+              Akses data statistik Desa Bajawali atau informasi kontak dan lokasi kantor desa.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
+            <Link
+              href="/data-desa"
+              className="group lg:col-span-7 flex min-h-[340px] flex-col justify-between bg-green-950 p-6 text-white md:p-8 transition-colors hover:bg-green-900"
+            >
+              <div>
+                <div className="flex items-start justify-between">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-green-300">
+                    <BarChart3 size={22} aria-hidden="true" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-white/50">
+                    01
+                  </span>
+                </div>
+                <div className="mt-8">
+                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-green-300 mb-2">
+                    Data & Statistik
+                  </div>
+                  <h3 className="!text-white font-editorial text-2xl md:text-3xl font-semibold leading-tight mb-3">
+                    Kenali Desa Bajawali melalui data.
+                  </h3>
+                  <p className="text-white/75 leading-relaxed max-w-xl">
+                    Lihat data kependudukan, luas wilayah, dan indikator Desa Bajawali dalam
+                    bentuk yang mudah dipahami.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <div className="grid grid-cols-3 gap-4 border-t border-white/20 pt-5">
+                  <div>
+                    <div className="font-editorial text-2xl !text-white">{desaInfo.penduduk}</div>
+                    <div className="text-[10px] uppercase tracking-widest text-white/55 mt-1">
+                      Jiwa
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-editorial text-2xl !text-white">{desaInfo.dusun}</div>
+                    <div className="text-[10px] uppercase tracking-widest text-white/55 mt-1">
+                      Dusun
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-editorial text-2xl !text-white">{desaInfo.rt}</div>
+                    <div className="text-[10px] uppercase tracking-widest text-white/55 mt-1">
+                      RT
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 flex items-center gap-1 text-sm font-semibold text-green-300">
+                  <span className="border-b border-green-300 group-hover:border-transparent transition-colors">
+                    Buka data desa
+                  </span>{' '}
+                  <span className="transition-transform group-hover:translate-x-1">
+                    <NavigationChevron direction="next" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/kontak"
+              className="group lg:col-span-5 flex min-h-[340px] flex-col justify-between border border-paper-200 bg-paper-50 p-6 md:p-8 transition-colors hover:border-green-300"
+            >
+              <div>
+                <div className="flex items-start justify-between">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-green-50 text-green-700">
+                    <MapPin size={22} aria-hidden="true" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-ink-400">
+                    02
+                  </span>
+                </div>
+                <div className="mt-8">
+                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-green-700 mb-2">
+                    Kontak & Lokasi
+                  </div>
+                  <h3 className="font-editorial text-2xl md:text-3xl font-semibold text-ink-950 leading-tight mb-3">
+                    Kantor Desa Bajawali.
+                  </h3>
+                  <p className="text-ink-600 leading-relaxed">
+                    Informasi pelayanan dan lokasi kantor desa tersedia dalam satu halaman.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <div className="space-y-3 border-t border-paper-200 pt-5">
+                  <div className="flex items-start gap-3 text-sm text-ink-700">
+                    <MapPin className="text-green-700 shrink-0 mt-0.5" size={17} aria-hidden="true" />
+                    <span>Desa Bajawali, Kec. Lariang, Kab. Pasangkayu</span>
+                  </div>
+                  <div className="flex items-start gap-3 text-sm text-ink-700">
+                    <Clock className="text-green-700 shrink-0 mt-0.5" size={17} aria-hidden="true" />
+                    <span>Senin–Jumat · 08.00–15.00 WITA</span>
+                  </div>
+                </div>
+                <div className="mt-6 flex items-center gap-1 text-sm font-semibold text-green-700">
+                  <span className="border-b border-green-700 group-hover:border-transparent transition-colors">
+                    Lihat kontak & lokasi
+                  </span>{' '}
+                  <span className="transition-transform group-hover:translate-x-1">
+                    <NavigationChevron direction="next" />
+                  </span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
