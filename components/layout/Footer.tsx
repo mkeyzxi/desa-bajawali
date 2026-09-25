@@ -167,6 +167,24 @@ export default function Footer() {
                 </span>
               </span>
             </Link>
+            <Link href="/" className="flex items-center gap-3 mb-4">
+              <Image
+                src="/gambar/logo_unimaju.webp"
+                alt="Lambang Universitas Muhammadiyah Mamuju"
+                width={728}
+                height={800}
+                sizes="48px"
+                className="h-12 w-auto shrink-0"
+              />
+              <span className="flex flex-col">
+                <span className="font-editorial text-xl font-semibold tracking-tight text-ink-950">
+                  Posko Bajawali
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-widest text-ink-400">
+                  Universitas Muhammadiyah Mamuju
+                </span>
+              </span>
+            </Link>
             <p className="text-sm text-ink-600 mb-6 max-w-sm">
               Website resmi Desa Bajawali, menyajikan informasi publik, profil, dan dokumentasi
               perkembangan desa.
