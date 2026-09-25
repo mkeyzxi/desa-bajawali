@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {desaInfo, beritaDummy, galeriDummy} from '@/data/dummy'
 import HeroCarousel from '@/components/layout/HeroCarousel'
+import { getPublicHeroSlides } from '@/lib/queries/village'
+import { getPublishedGallery } from '@/lib/queries/gallery'
+import { getPublishedNews } from '@/lib/queries/news'
 import HomeScrollEffects from '@/components/animations/HomeScrollEffects'
 import StructureImageLightbox from '@/components/gallery/StructureImageLightbox'
 import { NavigationChevron } from '@/components/ui/NavigationChevron'
@@ -89,15 +92,66 @@ const getInitials = (nama: string) =>
     .join('')
     .toUpperCase()
 
-export default function Home() {
-  const featureNews = beritaDummy[0]
-  const otherNews = beritaDummy.slice(1, 4)
-  const latestGallery = galeriDummy.slice(0, 5)
+export default async function Home() {
+  const [publicSlides, publicNews, publicGallery] = await Promise.all([
+    getPublicHeroSlides(),
+    getPublishedNews(),
+    getPublishedGallery(),
+  ])
+  const heroSlides = publicSlides
+    .filter(
+      (slide) =>
+        slide.primary_action_label &&
+        slide.primary_action_href &&
+        slide.secondary_action_label &&
+        slide.secondary_action_href,
+    )
+    .map((slide) => ({
+      id: slide.id,
+      image: slide.image_url || '/gambar/background/background_1.webp',
+      title: slide.title,
+      subtitle: slide.subtitle,
+      description: slide.description,
+      primaryAction: {
+        label: slide.primary_action_label as string,
+        href: slide.primary_action_href as string,
+      },
+      secondaryAction: {
+        label: slide.secondary_action_label as string,
+        href: slide.secondary_action_href as string,
+      },
+    }))
+  const newsList = publicNews.length > 0
+    ? publicNews.map((item) => ({
+        id: item.id,
+        slug: item.slug,
+        title: item.title,
+        category: item.category,
+        date: new Date(item.published_at || item.created_at).toLocaleDateString('id-ID', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        }),
+        excerpt: item.excerpt,
+        image: item.image_url || '/gambar/galeri/galeri_1.webp',
+      }))
+    : beritaDummy
+  const galleryList = publicGallery.length > 0
+    ? publicGallery.map((item) => ({
+        id: item.id,
+        url: item.image_url,
+        caption: item.title,
+        category: item.category,
+      }))
+    : galeriDummy
+  const featureNews = newsList[0]
+  const otherNews = newsList.slice(1, 4)
+  const latestGallery = galleryList.slice(0, 5)
 
   return (
     <div className="flex flex-col">
       {/* Hero Carousel */}
-      <HeroCarousel />
+      <HeroCarousel initialSlides={heroSlides.length > 0 ? heroSlides : undefined} />
 
       {/* Sambutan Kepala Desa */}
       <section className="py-12 md:py-16 border-b border-paper-200">

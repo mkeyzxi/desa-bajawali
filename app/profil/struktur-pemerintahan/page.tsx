@@ -1,59 +1,7 @@
 import Image from 'next/image'
+import { getPublicVillageStructure } from '@/lib/queries/village'
 
 export const metadata = {title: 'Struktur Pemerintahan Desa Bajawali'}
-
-const perangkatDesa = [
-  {jabatan: 'Sekretaris Desa', nama: 'Kadek Wijaya'},
-  {
-    jabatan: 'Kaur Umum dan Perencanaan',
-    nama: 'I Gede Andi Suardika',
-    foto: '/gambar/struktur/I GEDE ANDI SUARDIKA.webp',
-  },
-  {jabatan: 'Kaur Keuangan', nama: 'Andreas Stevanus H'},
-  {
-    jabatan: 'Kasi Pemerintah',
-    nama: 'I Gede Agus Puja',
-    foto: '/gambar/struktur/igede Agus puja.webp',
-  },
-  {
-    jabatan: 'Kasi Kesra & Pelayanan',
-    nama: 'Meilisa',
-    foto: '/gambar/struktur/Meilisa.webp',
-  },
-  {
-    jabatan: 'Staf Kaur Keuangan',
-    nama: 'Ni Komang Ayu Tantri',
-    foto: '/gambar/struktur/Ni km ayu Tantri.webp',
-  },
-  {
-    jabatan: 'Staf Kasi Kesra',
-    nama: 'Ni Made Pipi Saphira',
-    foto: '/gambar/struktur/NI MADE PIPI SAPHIRA.webp',
-  },
-]
-
-const kepalaDusun = [
-  {
-    dusun: 'Kadus Kerta',
-    nama: 'I Ketut Agus Darmadi',
-    foto: '/gambar/struktur/I ketut agus darmadi.webp',
-  },
-  {
-    dusun: 'Kadus Makmur',
-    nama: 'Ni Komang Suartini',
-    foto: '/gambar/struktur/Ni Komang Suartini.webp',
-  },
-  {dusun: 'Kadus Lestari', nama: 'I Wayan Juli Antara'},
-  {dusun: 'Kadus Mandiri', nama: 'Kadek Rikin'},
-]
-
-const bpd = [
-  {jabatan: 'Ketua', nama: 'I Made Mantik, S.Ag.'},
-  {jabatan: 'Wakil Ketua', nama: 'H. Imam Suhadi'},
-  {jabatan: 'Sekretaris', nama: 'Ni Kadek Arnila Wati'},
-  {jabatan: 'Anggota', nama: 'I Gede Sugiarto'},
-  {jabatan: 'Anggota', nama: 'I Kadek Oerdi Arisona'},
-]
 
 const getInitials = (nama: string) =>
   nama
@@ -65,7 +13,27 @@ const getInitials = (nama: string) =>
     .join('')
     .toUpperCase()
 
-export default function StrukturPemerintahanPage() {
+export default async function StrukturPemerintahanPage() {
+  const { officials, bpd } = await getPublicVillageStructure()
+  const kepalaDesa = officials.find((official) => official.position === 'Kepala Desa')
+  const perangkatDesa = officials
+    .filter(
+      (official) =>
+        official.position !== 'Kepala Desa' && official.position !== 'Kepala Dusun',
+    )
+    .map((official) => ({
+      jabatan: official.position,
+      nama: official.name,
+      foto: official.photo_url || undefined,
+    }))
+  const kepalaDusun = officials
+    .filter((official) => official.position === 'Kepala Dusun')
+    .map((official) => ({
+      dusun: official.dusun ? `Kadus ${official.dusun}` : 'Kepala Dusun',
+      nama: official.name,
+      foto: official.photo_url || undefined,
+    }))
+
   return (
     <div className="py-12 md:py-24">
       <div className="container mx-auto px-5 lg:px-8">
@@ -97,8 +65,8 @@ export default function StrukturPemerintahanPage() {
                 {/* Foto */}
                 <div className="relative h-[360px] md:h-[400px] bg-paper-200">
                   <Image
-                    src="/gambar/struktur/kepala-desa-bajawali.webp"
-                    alt="Kepala Desa Bajawali"
+                    src={kepalaDesa?.photo_url || '/gambar/struktur/kepala-desa-bajawali.webp'}
+                    alt={kepalaDesa ? `Kepala Desa ${kepalaDesa.name}` : 'Kepala Desa Bajawali'}
                     fill
                     priority
                     className="object-cover object-top"
@@ -111,12 +79,12 @@ export default function StrukturPemerintahanPage() {
                     Kepala Desa
                   </span>
                   <h2 className="font-editorial text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-950 leading-tight mb-5">
-                    Ketut Langga, S.Ag
+                    {kepalaDesa?.name || 'Ketut Langga, S.Ag'}
                   </h2>
                   <div className="w-12 h-px bg-paper-300 mb-5" />
                   <p className="text-ink-600 text-base md:text-lg leading-relaxed max-w-xl">
-                    Memimpin penyelenggaraan pemerintahan desa, pelaksanaan pembangunan desa,
-                    pembinaan kemasyarakatan desa, dan pemberdayaan masyarakat desa.
+                    {kepalaDesa?.welcome_text ||
+                      'Memimpin penyelenggaraan pemerintahan desa, pelaksanaan pembangunan desa, pembinaan kemasyarakatan desa, dan pemberdayaan masyarakat desa.'}
                   </p>
                 </div>
               </div>
@@ -230,14 +198,14 @@ export default function StrukturPemerintahanPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {bpd.map((anggota) => (
                 <div
-                  key={`${anggota.jabatan}-${anggota.nama}`}
+                  key={`${anggota.position}-${anggota.name}`}
                   className="bg-paper-50 border border-paper-200 rounded-md p-5 md:p-6 text-center"
                 >
                   <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-green-700 mb-2">
-                    {anggota.jabatan}
+                    {anggota.position}
                   </div>
                   <h4 className="font-editorial text-xl md:text-2xl font-semibold text-ink-950">
-                    {anggota.nama}
+                    {anggota.name}
                   </h4>
                 </div>
               ))}

@@ -41,8 +41,9 @@ Dikembangkan oleh tim Posko Desa Bajawali — Universitas Muhammadiyah Mamuju.
 | Tahun data utama | 2026 |
 | Framework | Next.js 16 App Router + React 19 + TypeScript 5 |
 | Styling | Tailwind CSS v4 dengan design token sendiri |
-| Data publik | `data/dummy.ts` sebagai sumber lokal terpusat |
-| Data news/gallery | Jalur Supabase tersedia dan dikonfigurasi melalui `lib/data-source.ts` |
+| Data publik | `data/dummy.ts` tetap menjadi fallback lokal |
+| Data domain CMS | Supabase melalui query domain dengan fallback lokal |
+| Data news/gallery | Supabase + fallback `data/dummy.ts` |
 | Package manager | pnpm 11.8.0 |
 | Bahasa antarmuka | Bahasa Indonesia (`lang="id"`) |
 
@@ -141,7 +142,7 @@ Konten telah dilengkapi dengan data dari **Profil Desa Bajawali Tahun 2026** (do
 ### 8. Berita & Kegiatan
 
 - `06 / Berita & Kegiatan` menampilkan satu feature news dan daftar berita sekunder.
-- Link homepage, daftar berita, detail berita, dan berita terkait menggunakan slug yang sama dari `data/dummy.ts`.
+- Link homepage, daftar berita, detail berita, dan berita terkait menggunakan slug yang sama; sumber Supabase memakai fallback `data/dummy.ts` bila data belum tersedia.
 - Slug yang saat ini digunakan:
   - `penyerahan-hibah-motor-kepada-umat-hindu-dan-umat-islam`
   - `penyerahan-bpjs-ketenagakerjaan-kepada-pegawainsara`
@@ -150,7 +151,7 @@ Konten telah dilengkapi dengan data dari **Profil Desa Bajawali Tahun 2026** (do
 
 ### 9. Galeri Dokumentasi
 
-- `07 / Galeri Dokumentasi` di beranda menampilkan lima foto terbaru dari `galeriDummy`.
+- `07 / Galeri Dokumentasi` di beranda menampilkan lima foto terbaru dari Supabase dengan fallback `galeriDummy`.
 - Layout mobile menggunakan satu kolom agar foto dan kategori seperti `Kegiatan Masyarakat` tetap terbaca.
 - Layout desktop menggunakan satu foto besar dan beberapa foto pendukung.
 - Halaman `/galeri` memiliki filter kategori yang benar-benar memfilter daftar foto.
@@ -170,14 +171,15 @@ Konten telah dilengkapi dengan data dari **Profil Desa Bajawali Tahun 2026** (do
 - Login admin tersedia di `/admin/login`.
 - Route `/admin/*` dilindungi oleh `proxy.ts` dan session Supabase.
 - Role yang diizinkan: `owner`, `developer`, dan `administrator`.
-- Dashboard admin menyediakan:
-  - Ringkasan data
-  - Manajemen profil
-  - Manajemen pengguna
-  - Manajemen berita dengan Tiptap
-  - Manajemen galeri
-  - Upload dan optimasi gambar
-- Data news dan gallery dapat dibaca dari Supabase, sedangkan data profil/demografi/infrastruktur tetap memakai data lokal.
+- Dashboard admin Phase 1 sekarang berisi:
+  - Ringkasan jumlah berita, galeri, potensi, dan status data desa
+  - Indikator kelengkapan profil, pemerintahan, data, kontak, dan hero
+  - Berita terbaru dan aktivitas CMS
+  - Aksi cepat ke modul baru
+- Navigasi admin dikelompokkan menjadi **Konten**, **Website**, dan **Sistem**, dengan drawer mobile.
+- Ringkasan CMS tersedia di `/admin/data-desa`, `/admin/pemerintahan`, `/admin/potensi`, dan `/admin/website`.
+- Berita dan galeri tetap memakai CRUD yang sudah ada, termasuk Tiptap dan upload gambar.
+- Data domain CMS dibaca dari Supabase; `data/dummy.ts` tetap tersedia sebagai fallback selama migrasi bertahap.
 
 ### 12. GSAP Scroll Animation
 
@@ -263,7 +265,10 @@ Konten telah dilengkapi dengan data dari **Profil Desa Bajawali Tahun 2026** (do
 | `/admin` | Dashboard admin | Selesai |
 | `/admin/profil` | Manajemen profil | Selesai |
 | `/admin/pengguna` | Manajemen pengguna | Selesai |
-| `/admin/data-desa` | Data dan statistik admin | Selesai |
+| `/admin/data-desa` | Ringkasan data, geografis, dan demografi | Selesai |
+| `/admin/pemerintahan` | Ringkasan kepala desa, perangkat, dusun, dan BPD | Selesai |
+| `/admin/potensi` | Ringkasan potensi desa | Selesai |
+| `/admin/website` | Ringkasan profil, kontak, dan hero banner | Selesai |
 | `/admin/berita` | Daftar berita | Selesai |
 | `/admin/berita/tambah` | Tambah berita | Selesai |
 | `/admin/berita/[id]/edit` | Edit berita | Selesai |
@@ -353,24 +358,25 @@ Prinsip visual yang dipertahankan:
 
 ## Data & Visualisasi
 
-- Data publik terpusat di **`data/dummy.ts`**.
-- Data tersebut berisi:
-  - `desaInfo`
-  - `batasWilayah`
-  - `lembagaPerekonomian`
-  - `saranaDesa`
-  - `mataPencaharian`
-  - `beritaDummy`
-  - `galeriDummy`
-- Nilai data sudah menggunakan profil desa 2026, meskipun nama file masih `dummy`.
+- Fallback data lokal tetap berada di **`data/dummy.ts`**.
+- Data domain CMS dipindahkan bertahap ke Supabase dan dibaca melalui query di `lib/queries/village.ts`.
+- Tabel domain yang disiapkan di `supabase-migration.sql`:
+  - `desa_profile`
+  - `desa_geography`
+  - `desa_statistics`
+  - `desa_demographics`
+  - `village_officials`
+  - `village_bpd`
+  - `village_potentials`
+  - `contact_information`
+  - `hero_slides`
 - Konfigurasi sumber data berada di `lib/data-source.ts`:
-  - News: Supabase
-  - Gallery: Supabase
-  - Profile: local
-  - Demographic: local
-  - Infrastructure: local
-- Homepage saat ini mengambil data ringkasan dari `data/dummy.ts`.
-- Halaman berita dan galeri dapat beralih ke Supabase melalui `isSupabaseSource()`.
+  - News, gallery, profile, demographic, infrastructure, government, potential, website: Supabase
+  - Jika tabel belum diisi atau query gagal, query domain mengembalikan fallback lokal.
+- Halaman kontak, geografis, dan struktur pemerintahan sudah membaca data Supabase dengan fallback lokal.
+- Potensi admin dan data publik memiliki query domain dengan fallback lokal.
+- Hero beranda menerima slide dari query Supabase, dengan fallback ke slide lokal.
+- Berita dan galeri tetap memakai CRUD Supabase yang sudah tersedia.
 - Slug berita yang aktif:
   - `penyerahan-hibah-motor-kepada-umat-hindu-dan-umat-islam`
   - `penyerahan-bpjs-ketenagakerjaan-kepada-pegawainsara`
@@ -499,10 +505,15 @@ desa-bajawali/
 │   │   ├── (auth)/login/page.tsx     # Login Supabase
 │   │   └── (protected)/
 │   │       ├── layout.tsx            # Layout admin terautentikasi
-│   │       ├── page.tsx              # Dashboard admin
-│   │       ├── profil/page.tsx       # Manajemen profil
+│   │       ├── loading.tsx           # Loading state CMS
+│   │       ├── error.tsx             # Error state CMS
+│   │       ├── page.tsx              # Dashboard CMS
+│   │       ├── profil/page.tsx       # Profil akun admin
 │   │       ├── pengguna/page.tsx     # Manajemen pengguna
-│   │       ├── data-desa/page.tsx    # Data/statistik admin
+│   │       ├── data-desa/page.tsx    # Data/geografi/demografi
+│   │       ├── pemerintahan/page.tsx # Struktur pemerintahan
+│   │       ├── potensi/page.tsx      # Ringkasan potensi
+│   │       ├── website/page.tsx      # Profil, kontak, hero
 │   │       ├── berita/
 │   │       │   ├── page.tsx
 │   │       │   ├── tambah/page.tsx
@@ -560,7 +571,9 @@ desa-bajawali/
 │   ├── data-source.ts                # Local/Supabase source switch
 │   ├── queries/
 │   │   ├── news.ts
-│   │   └── gallery.ts
+│   │   ├── gallery.ts
+│   │   ├── dashboard.ts              # Overview CMS dan status kelengkapan
+│   │   └── village.ts                # Query domain publik + fallback lokal
 │   └── supabase/
 │       ├── client.ts
 │       └── server.ts
@@ -681,8 +694,18 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 - Session refresh dan route protection: `proxy.ts`
 - Query news: `lib/queries/news.ts`
 - Query gallery: `lib/queries/gallery.ts`
+- Query dashboard/domain: `lib/queries/dashboard.ts` dan `lib/queries/village.ts`
 - Pilihan sumber data: `lib/data-source.ts`
-- Skema tabel: `supabase-migration.sql`
+- Skema, RLS, trigger, index, dan seed: `supabase-migration.sql`
+
+### Menjalankan migration Phase 1
+
+1. Buka Supabase Dashboard → **SQL Editor** → **New query**.
+2. Salin dan jalankan seluruh isi `supabase-migration.sql`.
+3. Verifikasi tabel `desa_profile`, `desa_statistics`, `desa_demographics`, `village_officials`, `contact_information`, dan `hero_slides`.
+4. Pastikan user admin memiliki role `owner`, `developer`, atau `administrator` pada tabel `profiles`.
+
+Section seed menggunakan `INSERT ... ON CONFLICT DO UPDATE`, sehingga dapat dijalankan ulang. Tabel dan data lokal tetap dipertahankan sebagai fallback jika migration belum dijalankan atau belum lengkap.
 
 Jangan menaruh service role key, secret key, atau token admin di `README.md`, source code publik, atau client-side environment variable.
 
@@ -694,7 +717,7 @@ Validasi yang digunakan:
 
 ```bash
 pnpm exec tsc --noEmit
-pnpm exec eslint app/page.tsx components/animations/HomeScrollEffects.tsx
+pnpm lint
 pnpm build
 ```
 
@@ -702,8 +725,7 @@ Status saat ini:
 
 - TypeScript: berhasil.
 - Build Next.js: berhasil.
-- ESLint file homepage dan animasi: berhasil.
-- `pnpm lint` masih memiliki satu error existing yang tidak terkait homepage, yaitu `@typescript-eslint/no-explicit-any` pada `components/admin/NewsForm.tsx:59`, serta beberapa warning legacy.
+- ESLint: berhasil tanpa error; preview blob di `ImageUploader` dikecualikan secara eksplisit dari optimasi `next/image`.
 
 ---
 
@@ -721,9 +743,16 @@ Status saat ini:
 
 - Tombol **Salin Alamat** pada halaman kontak.
 - Peningkatan filter/lightbox galeri penuh jika diperlukan.
-- Halaman 404, loading, dan error state.
+- Halaman 404 dan penyempurnaan empty state per modul.
 - Filter berita dan grafik berita.
 - Pencarian internal opsional.
+
+### CMS Phase 2+
+
+- Form CRUD untuk profil, geografis, statistik, dan demografi.
+- Form pengelolaan kepala desa/perangkat/dusun/BPD.
+- Form potensi, hero banner, dan kontak.
+- Sinkronisasi chart dan seluruh modul publik dari data Supabase.
 
 ### Data dan Aset
 
