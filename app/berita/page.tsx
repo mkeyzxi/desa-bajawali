@@ -33,6 +33,10 @@ export default async function BeritaPage() {
     newsList = beritaDummy
   }
 
+  if (newsList.length === 0) {
+    newsList = beritaDummy
+  }
+
   const featureNews = newsList[0];
   const remainingNews = newsList.slice(1);
 

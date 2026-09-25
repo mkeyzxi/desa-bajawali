@@ -165,7 +165,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { NavigationChevron } from '@/components/ui/NavigationChevron'
 
-const slides = [
+export type HeroSlideData = {
+  id: string | number
+  image: string
+  title: string
+  subtitle: string
+  description: string
+  primaryAction: { label: string; href: string }
+  secondaryAction: { label: string; href: string }
+}
+
+const fallbackSlides: HeroSlideData[] = [
   {
     id: 1,
     image:
@@ -201,8 +211,13 @@ const slides = [
   },
 ]
 
-export default function HeroCarousel() {
+export default function HeroCarousel({
+  initialSlides,
+}: {
+  initialSlides?: HeroSlideData[]
+}) {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const slides = initialSlides && initialSlides.length > 0 ? initialSlides : fallbackSlides
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -210,7 +225,7 @@ export default function HeroCarousel() {
     }, 6000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [slides.length])
 
   return (
     <section className="relative w-full h-[100dvh] min-h-[600px] overflow-hidden bg-slate-950">
