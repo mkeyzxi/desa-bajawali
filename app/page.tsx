@@ -22,13 +22,13 @@ const kepalaDesa = {
 }
 
 const perangkatDesa: PerangkatDesa[] = [
-  {jabatan: 'Sekretaris Desa', nama: 'Kadek Wijaya'},
+  {jabatan: 'Sekretaris Desa', nama: 'Kadek Wijaya', foto: '/gambar/struktur/Kadek Wijaya.webp'},
   {
     jabatan: 'Kaur Umum dan Perencanaan',
     nama: 'I Gede Andi Suardika',
     foto: '/gambar/struktur/I GEDE ANDI SUARDIKA.webp',
   },
-  {jabatan: 'Kaur Keuangan', nama: 'Andreas Stevanus H'},
+  {jabatan: 'Kaur Keuangan', nama: 'Andreas Stevanus H', foto: '/gambar/struktur/Andreas Stevanus H.webp'},
   {
     jabatan: 'Kasi Pemerintah',
     nama: 'I Gede Agus Puja',

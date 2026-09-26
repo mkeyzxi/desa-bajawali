@@ -550,17 +550,17 @@ INSERT INTO public.village_officials
   (name, position, photo_url, photo_path, period, welcome_text, dusun, sort_order, is_active)
 VALUES
   ('Ketut Langga, S.Ag', 'Kepala Desa', '/gambar/struktur/kepala-desa-bajawali.webp', '/gambar/struktur/kepala-desa-bajawali.webp', '2025', 'Memimpin penyelenggaraan pemerintahan, pembangunan, pembinaan kemasyarakatan, dan pemberdayaan masyarakat desa.', NULL, 1, true),
-  ('Kadek Wijaya', 'Sekretaris Desa', NULL, NULL, NULL, NULL, NULL, 2, true),
+  ('Kadek Wijaya', 'Sekretaris Desa', '/gambar/struktur/Kadek Wijaya.webp', '/gambar/struktur/Kadek Wijaya.webp', NULL, NULL, NULL, 2, true),
   ('I Gede Andi Suardika', 'Kaur Umum dan Perencanaan', '/gambar/struktur/I GEDE ANDI SUARDIKA.webp', '/gambar/struktur/I GEDE ANDI SUARDIKA.webp', NULL, NULL, NULL, 3, true),
-  ('Andreas Stevanus H', 'Kaur Keuangan', NULL, NULL, NULL, NULL, NULL, 4, true),
+  ('Andreas Stevanus H', 'Kaur Keuangan', '/gambar/struktur/Andreas Stevanus H.webp', '/gambar/struktur/Andreas Stevanus H.webp', NULL, NULL, NULL, 4, true),
   ('I Gede Agus Puja', 'Kasi Pemerintah', '/gambar/struktur/igede Agus puja.webp', '/gambar/struktur/igede Agus puja.webp', NULL, NULL, NULL, 5, true),
   ('Meilisa', 'Kasi Kesra & Pelayanan', '/gambar/struktur/Meilisa.webp', '/gambar/struktur/Meilisa.webp', NULL, NULL, NULL, 6, true),
   ('Ni Komang Ayu Tantri', 'Staf Kaur Keuangan', '/gambar/struktur/Ni km ayu Tantri.webp', '/gambar/struktur/Ni km ayu Tantri.webp', NULL, NULL, NULL, 7, true),
   ('Ni Made Pipi Saphira', 'Staf Kasi Kesra', '/gambar/struktur/NI MADE PIPI SAPHIRA.webp', '/gambar/struktur/NI MADE PIPI SAPHIRA.webp', NULL, NULL, NULL, 8, true),
   ('I Ketut Agus Darmadi', 'Kepala Dusun', '/gambar/struktur/I ketut agus darmadi.webp', '/gambar/struktur/I ketut agus darmadi.webp', NULL, NULL, 'Kerta', 9, true),
   ('Ni Komang Suartini', 'Kepala Dusun', '/gambar/struktur/Ni Komang Suartini.webp', '/gambar/struktur/Ni Komang Suartini.webp', NULL, NULL, 'Makmur', 10, true),
-  ('I Wayan Juli Antara', 'Kepala Dusun', NULL, NULL, NULL, NULL, 'Lestari', 11, true),
-  ('Kadek Rikin', 'Kepala Dusun', NULL, NULL, NULL, NULL, 'Mandiri', 12, true)
+  ('I Wayan Juli Antara', 'Kepala Dusun', '/gambar/struktur/I Wayan Juli Antara.webp', '/gambar/struktur/I Wayan Juli Antara.webp', NULL, NULL, 'Lestari', 11, true),
+  ('Kadek Rikin', 'Kepala Dusun', '/gambar/struktur/Kadek Rikin.webp', '/gambar/struktur/Kadek Rikin.webp', NULL, NULL, 'Mandiri', 12, true)
 ON CONFLICT (position, name) DO UPDATE SET
   photo_url = EXCLUDED.photo_url,
   photo_path = EXCLUDED.photo_path,
