@@ -427,7 +427,7 @@ const fallbackBpd: VillageBpdMember[] = [
   ['H. Imam Suhadi', 'Wakil Ketua'],
   ['Ni Kadek Arnila Wati', 'Sekretaris'],
   ['I Gede Sugiarto', 'Anggota'],
-  ['I Kadek Oerdi Arisona', 'Anggota'],
+  ['I Kadek Perdi Arisona', 'Anggota'],
 ].map(([name, position], index) => ({
   id: `fallback-bpd-${index + 1}`,
   name,

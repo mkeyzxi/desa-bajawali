@@ -438,6 +438,23 @@ CREATE POLICY "Public can read contact information" ON public.contact_informatio
 DROP POLICY IF EXISTS "Public can read active hero slides" ON public.hero_slides;
 CREATE POLICY "Public can read active hero slides" ON public.hero_slides FOR SELECT TO anon, authenticated USING (is_active = true);
 
+-- CATATAN: policy "Authenticated can read all ..." di bawah juga tersedia
+-- terpisah di supabase-cms-policies.sql. Jalankan file terpisah itu, bukan
+-- seluruh file ini, bila database sudah berisi data hasil editan CMS.
+
+-- CMS admin perlu melihat seluruh baris, termasuk yang disembunyikan, supaya
+-- data non-aktif bisa diedit atau ditampilkan lagi. Policy permissive di
+-- Postgres bersifat OR, sehingga policy ini tidak relaxing hak akses anon:
+-- anon tetap hanya bisa membaca baris yang aktif.
+DROP POLICY IF EXISTS "Authenticated can read all village officials" ON public.village_officials;
+CREATE POLICY "Authenticated can read all village officials" ON public.village_officials FOR SELECT TO authenticated USING (true);
+DROP POLICY IF EXISTS "Authenticated can read all village bpd" ON public.village_bpd;
+CREATE POLICY "Authenticated can read all village bpd" ON public.village_bpd FOR SELECT TO authenticated USING (true);
+DROP POLICY IF EXISTS "Authenticated can read all hero slides" ON public.hero_slides;
+CREATE POLICY "Authenticated can read all hero slides" ON public.hero_slides FOR SELECT TO authenticated USING (true);
+DROP POLICY IF EXISTS "Authenticated can read all village potentials" ON public.village_potentials;
+CREATE POLICY "Authenticated can read all village potentials" ON public.village_potentials FOR SELECT TO authenticated USING (true);
+
 -- Authenticated users dapat mengelola seluruh data CMS utama.
 DROP POLICY IF EXISTS "Authenticated can manage desa profile" ON public.desa_profile;
 CREATE POLICY "Authenticated can manage desa profile" ON public.desa_profile FOR ALL TO authenticated USING (true) WITH CHECK (true);
@@ -570,6 +587,13 @@ ON CONFLICT (position, name) DO UPDATE SET
   sort_order = EXCLUDED.sort_order,
   is_active = EXCLUDED.is_active;
 
+-- Koreksi nama anggota BPD. Dilakukan sebelum seed karena UNIQUE (position, name):
+-- bila hanya mengganti nilai di seed, baris lama tidak akan kena ON CONFLICT
+-- sehingga muncul dua anggota dengan nama yang sama.
+UPDATE public.village_bpd
+SET name = 'I Kadek Perdi Arisona'
+WHERE name = 'I Kadek Oerdi Arisona';
+
 INSERT INTO public.village_bpd
   (name, position, photo_url, photo_path, sort_order, is_active)
 VALUES
@@ -577,7 +601,7 @@ VALUES
   ('H. Imam Suhadi', 'Wakil Ketua', NULL, NULL, 2, true),
   ('Ni Kadek Arnila Wati', 'Sekretaris', NULL, NULL, 3, true),
   ('I Gede Sugiarto', 'Anggota', NULL, NULL, 4, true),
-  ('I Kadek Oerdi Arisona', 'Anggota', NULL, NULL, 5, true)
+  ('I Kadek Perdi Arisona', 'Anggota', NULL, NULL, 5, true)
 ON CONFLICT (position, name) DO UPDATE SET
   photo_url = EXCLUDED.photo_url,
   photo_path = EXCLUDED.photo_path,
